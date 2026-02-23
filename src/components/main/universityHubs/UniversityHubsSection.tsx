@@ -4,10 +4,10 @@ const universities = [
   { src: "/universities/other1.png", alt: "University" },
   { src: "/images/YSU.png", alt: "YSU" },
   { src: "/universities/asue.png", alt: "ASUE" },
-  { src: "/universities/nuaca.png", alt: "NUACA" },
+  { src: "/images/NUACA.png", alt: "NUACA" },
+  { src: "/universities/ysu.png", alt: "University" },
   { src: "/images/AUA.png", alt: "AUA" },
-  { src: "/universities/other2.png", alt: "University" },
-  { src: "/universities/other2.png", alt: "University" },
+  { src: "/universities/nuaca.png", alt: "University" },
 ];
 
 const UniversityHubsSection = () => {
