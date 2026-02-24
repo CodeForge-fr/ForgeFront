@@ -15,7 +15,7 @@ export default function SwiperButtons({ swiper }: SwiperButtonsProps) {
     <div className="flex gap-[10px]">
       <button
         onClick={() => swiper?.slidePrev()}
-        className="rounded-3xl bg-[#2D3DD1] w-[48px] h-[48px] flex justify-center items-center"
+        className="rounded-3xl bg-[#2D3DD1] w-[48px] h-[48px] flex justify-center items-center cursor-pointer"
         aria-label="Previous slide"
       >
         <Image src={leftIcon} alt="Previous" width={24} height={24} />
@@ -23,7 +23,7 @@ export default function SwiperButtons({ swiper }: SwiperButtonsProps) {
 
       <button
         onClick={() => swiper?.slideNext()}
-        className="rounded-3xl bg-[#2D3DD1] w-[48px] h-[48px] flex justify-center items-center"
+        className="rounded-3xl bg-[#2D3DD1] w-[48px] h-[48px] flex justify-center items-center cursor-pointer"
         aria-label="Next slide"
       >
         <Image src={rightIcon} alt="Next" width={24} height={24} />

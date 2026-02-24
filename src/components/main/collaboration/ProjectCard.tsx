@@ -9,7 +9,7 @@ function ProjectCard({ project }: ProjectCardProps) {
 
   return (
     <div
-      className={`w-full bg-white rounded-3xl p-5 flex flex-col gap-5 border-none h-full`}
+      className={`w-full h-full bg-white rounded-3xl p-5 flex flex-col gap-5 border-none`}
     >
       <div className="flex justify-between items-start">
         <div className="w-full flex items-center justify-between gap-3">
