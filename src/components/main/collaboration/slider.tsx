@@ -16,7 +16,7 @@ export default function ProjectSlider() {
   const [isActive, setIsActive] = useState<number | null>(0);
   const [swiper, setSwiper] = useState<SwiperType | null>(null);
   return (
-    <section className="mt-[60px] rounded-3xl">
+    <div className="mt-[60px] rounded-3xl">
       <div className="flex justify-between items-center text-white">
         <div className="flex flex-col gap-y-[20px]">
           <h2 className="italic text-[#333333] font-normal">
@@ -50,14 +50,14 @@ export default function ProjectSlider() {
           640: { slidesPerView: 2 },
           1024: { slidesPerView: 3 },
         }}
-        className="mt-[40px]"
+        className="mt-8"
       >
         {projectsData.map((project) => (
-          <SwiperSlide key={project.id} className="mr-[20px]">
+          <SwiperSlide key={project.id} className="mr-5">
             <ProjectCard project={project} />
           </SwiperSlide>
         ))}
       </Swiper>
-    </section>
+    </div>
   );
 }

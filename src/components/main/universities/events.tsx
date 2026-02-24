@@ -6,7 +6,7 @@ import arrowTop from "../../../../public/icons/arrowTop.svg";
 
 export default function EventGrid() {
   return (
-    <section className="max-w-7xl mx-auto mt-[100px]">
+    <section className="w-full mx-auto mt-[100px]">
       <div className="flex gap-6 mb-8 text-gray-600 font-medium">
         <div className="flex items-center gap-1 cursor-pointer">
           Universities
