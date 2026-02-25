@@ -1,7 +1,7 @@
 import Image from "next/image";
 
 const universities = [
-  { src: "/universities/other1.png", alt: "University" },
+  { src: "/universities/npua.png", alt: "University" },
   { src: "/images/YSU.png", alt: "YSU" },
   { src: "/universities/asue.png", alt: "ASUE" },
   { src: "/images/NUACA.png", alt: "NUACA" },
