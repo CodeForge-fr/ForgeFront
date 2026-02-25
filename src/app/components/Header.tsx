@@ -6,17 +6,24 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import { ChevronDown, ChevronUp } from "lucide-react";
 
-interface University {
-  name: string;
-  country: string;
-}
+// interface University {
+//   name: string;
+//   country: string;
+// }
 
 interface Event {
-  event: string;
+  id: number;
+  name: string;
   date: string;
 }
 
+interface Partner {
+  id: number;
+  name: string;
+}
+
 interface Language {
+  id: number;
   code: string;
   language: string;
 }
@@ -26,43 +33,46 @@ interface HeaderI {
 }
 
 export default function Header({ className }: HeaderI) {
-  const [isDropdownOpenU, setIsDropdownOpenU] = useState(false);
+  //   const [isDropdownOpenU, setIsDropdownOpenU] = useState(false);
+
   const [isDropdownOpenE, setIsDropdownOpenE] = useState(false);
-  const [isDropdownOpenP, setIsDropdownOpenP] = useState(false);
+  const [isDropdownOpenPr, setIsDropdownOpenPr] = useState(false);
   const [isDropdownOpenL, setIsDropdownOpenL] = useState(false);
-  const [universities, setUniversities] = useState<University[]>([]);
+  const [isDropdownOpenP, setIsDropdownOpenP] = useState(false);
+  //   const [universities, setUniversities] = useState<University[]>([]);
+  const [partners, setPartners] = useState<Partner[]>([]);
 
   const [events, setEvents] = useState<Event[]>([]);
 
   const [languages, setLanguages] = useState<Language[]>([]);
   const [selectedLanguage, setSelectedLanguage] = useState("En");
 
-  useEffect(() => {
-    if (isDropdownOpenU && universities.length === 0) {
-      fetch("/api/universities")
-        .then((res) => res.json())
-        .then((data) => {
-          // Handle both array and object responses
-          const universitiesList = Array.isArray(data) ? data : data.data || [];
-          const limitedData = universitiesList.slice(0, 10).map((uni: any) => ({
-            name: uni.name || uni.universityName || "Unknown",
-            country: uni.country || "",
-          }));
-          setUniversities(limitedData);
-        })
-        .catch((error) => {
-          console.error("Error fetching universities:", error);
-        });
-    }
-  }, [isDropdownOpenU, universities.length]);
+  //   useEffect(() => {
+  //     if (isDropdownOpenU && universities.length === 0) {
+  //       fetch("/api/universities")
+  //         .then((res) => res.json())
+  //         .then((data) => {
+  //           // Handle both array and object responses
+  //           const universitiesList = Array.isArray(data) ? data : data.data || [];
+  //           const limitedData = universitiesList.slice(0, 10).map((uni: any) => ({
+  //             name: uni.name || uni.universityName || "Unknown",
+  //             country: uni.country || "",
+  //           }));
+  //           setUniversities(limitedData);
+  //         })
+  //         .catch((error) => {
+  //           console.error("Error fetching universities:", error);
+  //         });
+  //     }
+  //   }, [isDropdownOpenU, universities.length]);
 
   useEffect(() => {
     if (isDropdownOpenE && events.length === 0) {
       const sampleEvents = [
-        { event: "Educational events", date: "October 26, 2026" },
-        { event: "IT events", date: "October 26, 2026" },
-        { event: "Sport events", date: "October 26, 2026" },
-        { event: "Other events", date: "October 26, 2026" },
+        { id: 1, name: "Educational events", date: "October 26, 2026" },
+        { id: 2, name: "IT events", date: "October 26, 2026" },
+        { id: 3, name: "Sport events", date: "October 26, 2026" },
+        { id: 4, name: "Other events", date: "October 26, 2026" },
       ];
       setEvents(sampleEvents);
     }
@@ -70,8 +80,8 @@ export default function Header({ className }: HeaderI) {
 
   useEffect(() => {
     const sampleLanguages = [
-      { code: "en", language: "English" },
-      { code: "hy", language: "Հայերեն" },
+      { id: 1, code: "en", language: "English" },
+      { id: 2, code: "hy", language: "Հայերեն" },
     ];
     setLanguages(sampleLanguages);
   }, []);
@@ -109,14 +119,14 @@ export default function Header({ className }: HeaderI) {
             {isDropdownOpenE && (
               <div className="absolute left-0 mt-3 w-[163px] bg-[#222222] rounded-[25px] p-[5px] gap-[10px] scale-125 shadow-[0_0_8px_rgba(255,255,255,0.8)] z-10 transition-all">
                 <div className="flex flex-col gap-4">
-                  {events.map((event, index) => (
+                  {events.map((event) => (
                     <a
-                      key={index}
+                      key={event.id}
                       href="#"
                       onClick={() => setIsDropdownOpenE(false)}
                       className="text-white text-[16px] font-light hover:text-gray-400 transition-colors font-['Poppins']"
                     >
-                      {event.event}
+                      {event.name}
                     </a>
                   ))}
                 </div>
@@ -126,27 +136,27 @@ export default function Header({ className }: HeaderI) {
 
           <div className="relative group">
             <button
-              onClick={() => setIsDropdownOpenP(!isDropdownOpenP)}
+              onClick={() => setIsDropdownOpenPr(!isDropdownOpenPr)}
               className="flex items-center text-[15px] font-['Poppins'] hover:text-gray-300 px-[10px]"
             >
               Projects{" "}
-              {isDropdownOpenP ? (
+              {isDropdownOpenPr ? (
                 <ChevronUp size={20} />
               ) : (
                 <ChevronDown size={20} />
               )}
             </button>
-            {isDropdownOpenP && (
+            {isDropdownOpenPr && (
               <div className="absolute left-0 mt-3 w-[163px] bg-[#222222] font-['Poppins'] rounded-[25px] p-[5px] gap-[10px] scale-125 shadow-[0_0_8px_rgba(255,255,255,0.8)] transition-all">
                 <div className="flex flex-col gap-4">
-                  {events.map((event, index) => (
+                  {events.map((project) => (
                     <a
-                      key={index}
+                      key={project.id}
                       href="#"
-                      onClick={() => setIsDropdownOpenP(false)}
+                      onClick={() => setIsDropdownOpenPr(false)}
                       className="text-white text-[16px] font-light hover:text-gray-400 transition-colors font-['Poppins']"
                     >
-                      {event.event}
+                      {project.name}
                     </a>
                   ))}
                 </div>
@@ -159,27 +169,27 @@ export default function Header({ className }: HeaderI) {
           <div className="hidden md:flex items-center ">
             <div className="relative group">
               <button
-                onClick={() => setIsDropdownOpenU(!isDropdownOpenU)}
+                onClick={() => setIsDropdownOpenP(!isDropdownOpenP)}
                 className="flex items-center text-[15px] font-['Poppins'] hover:text-gray-300 px-[10px]"
               >
                 Partners{" "}
-                {isDropdownOpenU ? (
+                {isDropdownOpenP ? (
                   <ChevronUp size={20} />
                 ) : (
                   <ChevronDown size={20} />
                 )}
               </button>
-              {isDropdownOpenU && (
+              {isDropdownOpenP && (
                 <div className="absolute left-0 mt-3 w-[163px] bg-[#222222] rounded-[25px] p-[5px] gap-[10px] scale-125 shadow-[0_0_8px_rgba(255,255,255,0.8)] z-10 transition-all">
                   <div className="flex flex-col gap-4">
-                    {universities.map((university, index) => (
+                    {events.map((partner) => (
                       <a
-                        key={index}
+                        key={partner.id}
                         href="#"
-                        onClick={() => setIsDropdownOpenU(false)}
+                        onClick={() => setIsDropdownOpenP(false)}
                         className="text-white text-[16px] font-light hover:text-gray-400 transition-colors font-['Poppins']"
                       >
-                        {university.name}
+                        {partner.name}
                       </a>
                     ))}
                   </div>

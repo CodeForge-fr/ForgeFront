@@ -1,6 +1,25 @@
 "use client";
 
+import { useEffect, useState } from "react";
+
+interface Menu {
+  id: number;
+  name: string;
+}
+
 export default function Footer() {
+  const [menu, setMenu] = useState<Menu[]>([]);
+  useEffect(() => {
+    if (menu.length === 0) {
+      const sampleMenu = [
+        { id: 1, name: "Universities" },
+        { id: 2, name: "Events" },
+        { id: 3, name: "Organizations" },
+        { id: 4, name: "Opportunities" },
+      ];
+      setMenu(sampleMenu);
+    }
+  }, [menu.length]);
   return (
     <footer className=" bg-[#2346D9] text-white ">
       <div className="w-max-[1280px] h-[580px] mx-[77px] flex justify-between px-20 ">
@@ -51,42 +70,20 @@ export default function Footer() {
                   Menu
                 </h4>
                 <ul className="list-none p-0 m-0 text-sm">
-                  <li>
-                    <a
-                      href="#"
-                      className="text-white my-[10px] no-underline hover:underline font-['Poppins']"
-                    >
-                      Universities
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      className="text-white my-[10px] no-underline hover:underline font-['Poppins']"
-                    >
-                      Events
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      className="text-white my-[10px] no-underline hover:underline font-['Poppins']"
-                    >
-                      Organizations
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      className="text-white my-[10px] no-underline hover:underline font-['Poppins']"
-                    >
-                      Opportunities
-                    </a>
-                  </li>
+                  {menu.map((item) => (
+                    <li key={item.id}>
+                      <a
+                        href="#"
+                        className="text-white my-[10px] no-underline hover:underline font-['Poppins']"
+                      >
+                        {item.name}
+                      </a>
+                    </li>
+                  ))}
                 </ul>
               </div>
             </div>
-            {/* ------------------ */}
+
             <div className="min-w-[120px]  gap-[20px]">
               <div className="h-[144px]">
                 <h4 className="text-[18px] font-['Poppins'] font-semi-bold">
@@ -136,7 +133,7 @@ export default function Footer() {
                 <ul className="list-none p-0 m-0 text-sm">
                   <li>
                     <a
-                      href="#"
+                      href="mailto:info@UniLink.am"
                       className="text-white my-[10px] no-underline hover:underline font-['Poppins']"
                     >
                       info@UniLink.am
