@@ -1,7 +1,7 @@
 import Image from "next/image";
 
 const universities = [
-  { src: "/universities/other1.png", alt: "University" },
+  { src: "/universities/npua.png", alt: "University" },
   { src: "/images/YSU.png", alt: "YSU" },
   { src: "/universities/asue.png", alt: "ASUE" },
   { src: "/images/NUACA.png", alt: "NUACA" },
@@ -12,7 +12,7 @@ const universities = [
 
 const UniversityHubsSection = () => {
   return (
-    <section className="bg-[#F5F5F7] py-24">
+    <section className="py-24">
       <div className="max-w-7xl mx-auto px-6">
         {/* Top Content */}
         <div className="flex justify-between items-start mb-20">
