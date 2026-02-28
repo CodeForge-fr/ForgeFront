@@ -47,7 +47,8 @@ export default function ProjectSlider() {
         onSwiper={setSwiper}
         slidesPerView={1}
         breakpoints={{
-          640: { slidesPerView: 2 },
+          375: { slidesPerView: 1 },
+          640: { slidesPerView: 3 },
           1024: { slidesPerView: 3 },
         }}
         className="mt-8"

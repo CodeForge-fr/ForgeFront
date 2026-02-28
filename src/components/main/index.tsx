@@ -5,7 +5,7 @@ import UniversityHubsSection from "./universityHubs/UniversityHubsSection";
 
 const MainComponent = () => {
   return (
-    <main className="container flex flex-col gap-y-20">
+    <main className="container flex flex-col items-center justify-center gap-y-20">
       <University />
       <Collaboration />
       <UniversityHubsSection />
