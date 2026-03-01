@@ -1,18 +1,5 @@
-import Modal from "@/components/modal/Modal";
+import { redirect } from "next/navigation";
 
-interface ISignIn {
-  onClose: () => void;
-}
-
-export default function SignInPage({ onClose }: ISignIn) {
-  return (
-    <>
-      <Modal
-        onClose={onClose}
-        text1="Welcome back !"
-        text2="Log In"
-        text3="Sign Up"
-      />
-    </>
-  );
+export default function SignInPage() {
+  redirect("/");
 }

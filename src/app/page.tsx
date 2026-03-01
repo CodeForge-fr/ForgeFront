@@ -1,54 +1,74 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation"; // Import the router
 import MainComponent from "@/components/main";
-import Modal from "@/components/modal/Modal";
-import SignUpPage from "./signup/page";
-import SignInPage from "./signin/page";
+import SignInModal from "@/components/modal/SignInModal";
+import SignUpModal from "@/components/modal/SignUpModal";
+import { useAuth } from "./context/AuthContext";
+
+type ModalType = "login" | "register" | null;
 
 export default function Home() {
-  const router = useRouter();
-  const [isLoginModal, setIsLoginModal] = useState(false);
-  const [isRegisterModal, setIsRegisterModal] = useState(false);
+  const { isLoggedIn, logout } = useAuth();
+  const [activeModal, setActiveModal] = useState<ModalType>(null);
 
   const openLogin = () => {
-    setIsLoginModal(true);
-    window.history.pushState(null, "", "/signin");
+    setActiveModal("login");
+    window.history.replaceState(null, "", "/signin");
   };
 
   const openRegister = () => {
-    setIsRegisterModal(true);
-    window.history.pushState(null, "", "/signup");
+    setActiveModal("register");
+    window.history.replaceState(null, "", "/signup");
   };
 
   const closeModal = () => {
-    setIsLoginModal(false);
-    setIsRegisterModal(false);
-    window.history.pushState(null, "", "/");
+    setActiveModal(null);
+    window.history.replaceState(null, "", "/");
+  };
+
+  const handleLoginSuccess = () => {
+    closeModal();
+  };
+
+  const handleLogout = () => {
+    logout();
+    window.history.replaceState(null, "", "/");
   };
 
   return (
     <div className="relative flex flex-col min-h-screen bg-zinc-50 dark:bg-black">
-      <nav className="p-6 flex gap-6 border-b border-zinc-800">
-        <button onClick={openLogin} className="hover:text-blue-500">
-          Sign In
-        </button>
-        <button onClick={openRegister} className="hover:text-blue-500">
-          Sign Up
-        </button>
+      <nav className="p-6 flex justify-end gap-6 bg-blue-400 text-white">
+        {isLoggedIn ? (
+          <button onClick={handleLogout} className="hover:text-red-500">
+            Logout
+          </button>
+        ) : (
+          <>
+            <button onClick={openLogin} className="hover:text-blue-500">
+              Sign In
+            </button>
+            <button onClick={openRegister} className="hover:text-blue-500">
+              Sign Up
+            </button>
+          </>
+        )}
       </nav>
 
       <MainComponent />
 
-      {(isLoginModal || isRegisterModal) && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm">
+      {activeModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4 md:p-10">
           <div className="absolute inset-0" onClick={closeModal} />
-          <div className="relative z-10">
-            {isLoginModal ? (
-              <SignInPage onClose={closeModal} />
+          <div className="relative z-10 w-2/5 max-w-7xl bg-[#1e1e1e] rounded-2xl p-8 shadow-2xl border border-gray-800 flex flex-col">
+            {activeModal === "login" ? (
+              <SignInModal
+                onClose={closeModal}
+                onLoginSuccess={handleLoginSuccess}
+                onSwitchToRegister={openRegister}
+              />
             ) : (
-              <SignUpPage onClose={closeModal} />
+              <SignUpModal onClose={closeModal} onSwitchToLogin={openLogin} />
             )}
           </div>
         </div>

@@ -10,11 +10,11 @@ export default function EventGrid() {
       <div className="flex gap-6 mb-8 text-gray-600 font-medium">
         <div className="flex items-center gap-1 cursor-pointer">
           Universities
-          <Image src={arrowTop} alt="arrow-top" />
+          <Image sizes="100vw" src={arrowTop} alt="arrow-top" />
         </div>
         <div className="flex items-center gap-1 cursor-pointer">
           Category
-          <Image src={arrowTop} alt="arrow-top" />
+          <Image sizes="100vw" src={arrowTop} alt="arrow-top" />
         </div>
       </div>
 

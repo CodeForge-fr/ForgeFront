@@ -39,6 +39,7 @@ const UniversityHubsSection = () => {
                 alt={uni.alt}
                 width={150}
                 height={150}
+                style={{ height: "auto" }} 
                 className="object-contain"
               />
             ))}
@@ -53,6 +54,7 @@ const UniversityHubsSection = () => {
                 alt={uni.alt}
                 width={170}
                 height={170}
+                style={{ height: "auto" }} 
                 className="object-contain"
               />
             ))}
