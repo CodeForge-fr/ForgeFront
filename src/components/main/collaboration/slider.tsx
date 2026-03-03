@@ -6,6 +6,8 @@ import SwiperButtons from "./SwiperButtons";
 import { projectsData } from "@/data/projectData";
 import type { Swiper as SwiperType } from "swiper";
 
+import "swiper/css";
+
 export default function ProjectSlider() {
   const [list] = useState([
     "Teammates",
@@ -45,12 +47,19 @@ export default function ProjectSlider() {
       <Swiper
         spaceBetween={24}
         onSwiper={setSwiper}
-        slidesPerView={1}
+        slidesPerView={4}
+        centeredSlides={false}
         breakpoints={{
-          640: { slidesPerView: 2 },
-          1024: { slidesPerView: 3 },
+          640: {
+            slidesPerView: 2,
+            spaceBetween: 20,
+          },
+          1024: {
+            slidesPerView: 3,
+            spaceBetween: 24,
+          },
         }}
-        className="mt-8"
+        className="mt-8 !overflow-visible md:!overflow-hidden"
       >
         {projectsData.map((project) => (
           <SwiperSlide key={project.id} className="mr-5">

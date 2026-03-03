@@ -26,3 +26,7 @@ body {
   color: var(--foreground);
   font-family: var(--font-poppins);
 }
+
+button, a {
+    cursor: pointer;
+}
