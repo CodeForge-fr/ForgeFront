@@ -7,7 +7,7 @@ const MainComponent = () => {
   return (
     <main className="container flex flex-col items-center justify-center gap-y-20 mx-auto px-4 my-20">
       <University />
-      <Collaboration />
+      {/* <Collaboration /> */}
       <UniversityHubsSection />
       <AboutSection />
     </main>

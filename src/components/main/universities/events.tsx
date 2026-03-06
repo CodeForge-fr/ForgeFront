@@ -3,6 +3,7 @@ import { EventCard } from "./eventCard";
 import Image from "next/image";
 import arrow from "../../../../public/icons/arrow.svg";
 import arrowTop from "../../../../public/icons/arrowTop.svg";
+import Link from "next/link";
 
 export default function EventGrid() {
   return (
@@ -18,11 +19,11 @@ export default function EventGrid() {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
         <EventCard event={eventsData[0]} />
 
         <div className="flex flex-col gap-y-5">
-          <div className="bg-blue-700 py-5 h-[150px] rounded-[32px] flex flex-col justify-between text-white cursor-pointer hover:bg-blue-800 transition-colors">
+          <div className="hidden bg-blue-700 py-5 h-[150px] rounded-[32px] flex flex-col justify-between text-white cursor-pointer hover:bg-blue-800 transition-colors md:hidden lg:flex">
             <div className="w-full flex justify-end px-5">
               <Image
                 src={arrow}
@@ -34,11 +35,26 @@ export default function EventGrid() {
               View all
             </span>
           </div>
-          <EventCard event={eventsData[1]} />
+          <EventCard event={eventsData[2]} />
         </div>
-
-        <EventCard event={eventsData[2]} />
+        <EventCard event={eventsData[1]} className="md:hidden lg:flex" />
+        <div className="flex bg-blue-700 py-5 h-[150px] rounded-[32px] flex flex-col justify-between text-white cursor-pointer hover:bg-blue-800 transition-colors md:hidden">
+          <div className="w-full flex justify-end px-5">
+            <Image
+              src={arrow}
+              alt="arrow"
+              className="w-12 bg-white rounded-full"
+            />
+          </div>
+          <span className="text-2xl font-bold pl-5 fnt-poppins">View all</span>
+        </div>
       </div>
+      <Link
+        href="/universities"
+        className="hidden md:flex items-center gap-2 mt-8 text-white font-medium hover:text-blue-800 transition-colors cursor-pointer w-max border-3 rounded-full px-15 py-2 m-auto bg-[#0097FE]"
+      >
+        View all
+      </Link>
     </section>
   );
 }
