@@ -23,7 +23,7 @@ export default function EventGrid() {
         <EventCard event={eventsData[0]} />
 
         <div className="flex flex-col gap-y-5">
-          <div className="hidden bg-[#0097FE] py-5 h-[150px] rounded-[32px] flex flex-col justify-between text-white cursor-pointer hover:bg-blue-500 transition-colors md:hidden lg:flex">
+          <div className="hidden  py-5 h-[150px] flex flex-col justify-between rounded-[32px] text-white bg-[#0097FE] cursor-pointer hover:bg-blue-500 transition-colors md:hidden lg:flex">
             <div className="w-full flex justify-end px-5">
               <Image
                 src={arrow}
@@ -51,7 +51,7 @@ export default function EventGrid() {
       </div>
       <Link
         href="/universities"
-        className="hidden md:flex lg:hidden items-center gap-2 mt-8 text-white font-medium hover:bg-blue-500 transition-colors cursor-pointer w-max rounded-full px-15 py-2 m-auto bg-[#0097FE]"
+        className="hidden w-max items-center gap-2 px-15 py-2 mt-20 mx-auto font-medium transition-colors cursor-pointer rounded-full  text-white bg-[#0097FE] hover:bg-blue-500 md:flex lg:hidden"
       >
         View all
       </Link>

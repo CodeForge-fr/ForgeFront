@@ -25,7 +25,7 @@ export default function ProjectSlider() {
           <h2 className="italic text-[#333333] font-normal">
             Who are you looking for?
           </h2>
-          <div className="flex text-[#333333] gap-x-[20px]">
+          <div className="flex flex-wrap text-[#333333] gap-5">
             {list.map((item, index) => (
               <span
                 key={index}
@@ -70,12 +70,14 @@ export default function ProjectSlider() {
         ))}
       </Swiper> */}
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-center mt-10 gap-x-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-center mt-10 gap-x-5">
         {projectsData.slice(0, 3).map((project, index) => (
           <div
             key={project.id}
             className={`mb-8 h-full ${
               index === 2 ? "hidden lg:block" : ""
+            } ${
+              index === 1 ? "hidden md:block" : ""
             }`}
           >
             <ProjectCard project={project} />
