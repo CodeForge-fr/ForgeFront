@@ -58,9 +58,10 @@ export default function Home() {
       <MainComponent />
 
       {activeModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4 md:p-10">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4 overflow-y-auto">
           <div className="absolute inset-0" onClick={closeModal} />
-          <div className="relative z-10 w-2/5 max-w-7xl bg-[#1e1e1e] rounded-2xl p-8 shadow-2xl border border-gray-800 flex flex-col">
+          <div className="relative z-10 w-full max-w-md max-h-[100vh] rounded-2xl">
+            {" "}
             {activeModal === "login" ? (
               <SignInModal
                 onClose={closeModal}

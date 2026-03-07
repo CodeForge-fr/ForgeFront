@@ -1,10 +1,11 @@
 "use client";
 import { useState } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
+// import { Swiper, SwiperSlide } from "swiper/react";
 import ProjectCard from "./ProjectCard";
-import SwiperButtons from "./SwiperButtons";
+// import SwiperButtons from "./SwiperButtons";
 import { projectsData } from "@/data/projectData";
-import type { Swiper as SwiperType } from "swiper";
+// import type { Swiper as SwiperType } from "swiper";
+// import { Navigation } from "swiper/modules";
 
 import "swiper/css";
 
@@ -16,7 +17,7 @@ export default function ProjectSlider() {
     "Tech Support",
   ]);
   const [isActive, setIsActive] = useState<number | null>(0);
-  const [swiper, setSwiper] = useState<SwiperType | null>(null);
+  //   const [swiper, setSwiper] = useState<SwiperType | null>(null);
   return (
     <div className="mt-[60px] rounded-3xl">
       <div className="flex justify-between items-center text-white">
@@ -30,7 +31,7 @@ export default function ProjectSlider() {
                 key={index}
                 className={`cursor-pointer transition-all ${
                   isActive === index
-                    ? "underline underline-offset-8 text-[#2D3DD1] font-semibold"
+                    ? "underline underline-offset-8 text-[#0097FE] font-semibold"
                     : "text-[#333333]"
                 }`}
                 onClick={() => setIsActive(index)}
@@ -41,13 +42,14 @@ export default function ProjectSlider() {
           </div>
         </div>
 
-        <SwiperButtons swiper={swiper} />
+        {/* <SwiperButtons swiper={swiper} /> */}
       </div>
 
-      <Swiper
+      {/* <Swiper
+        modules={[Navigation]}
         spaceBetween={24}
         onSwiper={setSwiper}
-        slidesPerView={4}
+        slidesPerView={1}
         centeredSlides={false}
         breakpoints={{
           640: {
@@ -66,7 +68,20 @@ export default function ProjectSlider() {
             <ProjectCard project={project} />
           </SwiperSlide>
         ))}
-      </Swiper>
+      </Swiper> */}
+
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-center mt-10 gap-x-8">
+        {projectsData.slice(0, 3).map((project, index) => (
+          <div
+            key={project.id}
+            className={`mb-8 h-full ${
+              index === 2 ? "hidden lg:block" : ""
+            }`}
+          >
+            <ProjectCard project={project} />
+          </div>
+        ))}
+      </div>
     </div>
   );
 }

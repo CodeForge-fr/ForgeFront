@@ -23,7 +23,7 @@ export default function EventGrid() {
         <EventCard event={eventsData[0]} />
 
         <div className="flex flex-col gap-y-5">
-          <div className="hidden bg-blue-700 py-5 h-[150px] rounded-[32px] flex flex-col justify-between text-white cursor-pointer hover:bg-blue-800 transition-colors md:hidden lg:flex">
+          <div className="hidden bg-[#0097FE] py-5 h-[150px] rounded-[32px] flex flex-col justify-between text-white cursor-pointer hover:bg-blue-500 transition-colors md:hidden lg:flex">
             <div className="w-full flex justify-end px-5">
               <Image
                 src={arrow}
@@ -38,7 +38,7 @@ export default function EventGrid() {
           <EventCard event={eventsData[2]} />
         </div>
         <EventCard event={eventsData[1]} className="md:hidden lg:flex" />
-        <div className="flex bg-blue-700 py-5 h-[150px] rounded-[32px] flex flex-col justify-between text-white cursor-pointer hover:bg-blue-800 transition-colors md:hidden">
+        <div className="flex bg-[#0097FE] py-5 h-[150px] rounded-[32px] flex flex-col justify-between text-white cursor-pointer hover:bg-blue-500 transition-colors md:hidden">
           <div className="w-full flex justify-end px-5">
             <Image
               src={arrow}
@@ -51,7 +51,7 @@ export default function EventGrid() {
       </div>
       <Link
         href="/universities"
-        className="hidden md:flex items-center gap-2 mt-8 text-white font-medium hover:text-blue-800 transition-colors cursor-pointer w-max border-3 rounded-full px-15 py-2 m-auto bg-[#0097FE]"
+        className="hidden md:flex lg:hidden items-center gap-2 mt-8 text-white font-medium hover:bg-blue-500 transition-colors cursor-pointer w-max rounded-full px-15 py-2 m-auto bg-[#0097FE]"
       >
         View all
       </Link>

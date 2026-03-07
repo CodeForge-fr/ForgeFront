@@ -19,76 +19,69 @@ interface ISignUp {
   text1: string;
   text2: string;
   text3: string;
+  onSubmit?: (e: React.FormEvent) => void;
+  formData?:
+    | {
+        name: string;
+        surname: string;
+        email: string;
+        phone: string;
+        password: string;
+        nickname: string;
+      }
+    | undefined;
+  isRegister?: boolean;
+  setFormData?: React.Dispatch<
+    React.SetStateAction<{
+      name: string;
+      surname: string;
+      email: string;
+      phone: string;
+      password: string;
+      nickname: string;
+    }>
+  >;
 }
 
 const Modal = ({
   onClose,
-  onLoginSuccess,
+  onSubmit,
   onSwitch,
   text1,
   text2,
   text3,
+  formData,
+  isRegister = false,
+  setFormData,
 }: ISignUp) => {
-  const { login, register, loading } = useAuth();
-
-  const [formData, setFormData] = useState({
-    name: "User",
-    surname: "Name",
-    email: "",
-    phone: "",
-    password: "",
-    nickname: "user123",
-    age: 20,
-    gender: "MALE",
-    role: "USER",
-  });
-
+  const { loading } = useAuth();
   const [showPassword, setShowPassword] = useState(false);
-  const isRegister = text2 === "Sign Up";
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-
-    if (isRegister) {
-      const success = await register(formData);
-      if (success) {
-        alert("Registration successful! Please sign in.");
-        onClose();
-      }
-    } else {
-      const success = await login(formData.email, formData.password);
-      if (success) {
-        onLoginSuccess?.();
-      }
-    }
-  };
 
   return (
-    <div className="max-w-xl">
+    <div className="max-w-xl w-full bg-[#1e1e1e] rounded-2xl relative px-8 py-10 mx-auto">
+      {" "}
       <button
         onClick={onClose}
-        className="absolute right-4 top-4 text-gray-400 hover:text-white transition-colors"
+        className="absolute right-5 top-5 text-gray-400 hover:text-white transition-colors"
       >
-        <Image sizes="100vw" src={close} alt="close-button" />
+        <Image src={close} alt="close-button" width={16} height={16} />
       </button>
-
-      <h1 className="text-white text-center text-[32px] mb-12 font-semibold">
+      <h1 className="text-white text-center text-[32px] mb-8 font-bold">
         {text1}
       </h1>
-
-      <form className="space-y-4" onSubmit={handleSubmit}>
+      <form className="space-y-3" onSubmit={onSubmit}>
         <div className="relative">
           <input
             type="email"
             placeholder="Email"
-            value={formData.email}
-            className="w-full bg-[#2a2a2a] text-white border border-gray-700 rounded-lg py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-[#FFFFFF]"
+            value={formData?.email ?? ""}
+            className="w-full bg-[#2a2a2a] text-white border border-gray-700 rounded-lg py-3 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-gray-400"
             onChange={(e) =>
-              setFormData({ ...formData, email: e.target.value })
+              setFormData?.({ ...formData!, email: e.target.value })
             }
           />
-          <div className="absolute right-3 top-2.5 text-gray-500">
-            <Image sizes="100vw" src={emailIcon} alt="email" />
+          <div className="absolute right-3 top-3 text-gray-500">
+            <Image src={emailIcon} alt="email" width={20} height={20} />
           </div>
         </div>
 
@@ -97,14 +90,14 @@ const Modal = ({
             <input
               type="tel"
               placeholder="Phone number"
-              value={formData.phone}
-              className="w-full bg-[#2a2a2a] text-white border border-gray-700 rounded-lg py-3 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-[#FFFFFF]"
+              value={formData?.phone ?? ""}
+              className="w-full bg-[#2a2a2a] text-white border border-gray-700 rounded-lg py-3 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-gray-400"
               onChange={(e) =>
-                setFormData({ ...formData, phone: e.target.value })
+                setFormData?.({ ...formData!, phone: e.target.value })
               }
             />
-            <div className="absolute right-3 top-2.5 text-gray-500">
-              <Image sizes="100vw" src={telIcon} alt="tel" />
+            <div className="absolute right-3 top-3 text-gray-500">
+              <Image src={telIcon} alt="tel" width={20} height={20} />
             </div>
           </div>
         )}
@@ -113,10 +106,10 @@ const Modal = ({
           <input
             type={showPassword ? "text" : "password"}
             placeholder="Password"
-            value={formData.password}
-            className="w-full bg-[#2a2a2a] text-white border border-gray-700 rounded-lg py-3 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-[#FFFFFF]"
+            value={formData?.password ?? ""}
+            className="w-full bg-[#2a2a2a] text-white border border-gray-700 rounded-lg py-3 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-gray-400"
             onChange={(e) =>
-              setFormData({ ...formData, password: e.target.value })
+              setFormData?.({ ...formData!, password: e.target.value })
             }
           />
           <button
@@ -139,7 +132,7 @@ const Modal = ({
                 <line x1="1" y1="1" x2="23" y2="23" />
               </svg>
             ) : (
-              <Image sizes="100vw" src={passwordIcon} alt="password" />
+              <Image src={passwordIcon} alt="password" width={20} height={20} />
             )}
           </button>
         </div>
@@ -152,8 +145,7 @@ const Modal = ({
           {loading ? "Processing..." : text2}
         </button>
       </form>
-
-      <div className="relative my-8">
+      <div className="relative my-6">
         <div className="absolute inset-0 flex items-center">
           <span className="w-full border-t border-gray-700 border-dotted"></span>
         </div>
@@ -161,14 +153,12 @@ const Modal = ({
           <span className="px-2 bg-[#1e1e1e] text-gray-400">Or</span>
         </div>
       </div>
-
       <div className="space-y-3">
         <SocialButton img={google} text="Continue with Google" />
         <SocialButton img={apple} text="Continue with Apple" />
         <SocialButton img={fb} text="Continue with Facebook" />
       </div>
-
-      <p className="text-center text-sm text-gray-400 mt-8">
+      <p className="text-center text-sm text-gray-400 mt-6">
         Already have an account?{" "}
         <button className="text-blue-500 hover:underline" onClick={onSwitch}>
           {text3}
@@ -177,5 +167,4 @@ const Modal = ({
     </div>
   );
 };
-
 export default Modal;

@@ -6,7 +6,6 @@ interface ProjectCardProps {
 }
 
 function ProjectCard({ project }: ProjectCardProps) {
-
   return (
     <div
       className={`w-full h-full bg-white rounded-3xl p-5 flex flex-col gap-5 border-none`}
@@ -22,6 +21,8 @@ function ProjectCard({ project }: ProjectCardProps) {
               <Image
                 src={project.logo}
                 alt="logo"
+                width={64}
+                height={40}
                 className="max-h-full object-contain"
               />
             </div>
@@ -44,7 +45,7 @@ function ProjectCard({ project }: ProjectCardProps) {
         {project.tags.map((tag) => (
           <span
             key={tag}
-            className="bg-[#2d3dd1] text-white text-[10px] p-2  rounded-md"
+            className="bg-[#0097FE] text-white text-[10px] p-2  rounded-md"
           >
             {tag}
           </span>
@@ -56,7 +57,7 @@ function ProjectCard({ project }: ProjectCardProps) {
       </div>
 
       <div className="flex flex-col gap-y-[25px]">
-        <button className="w-full bg-[#2D3DD1] text-white px-6 py-2 rounded-full text-sm font-medium hover:bg-blue-700 transition-colors">
+        <button className="w-full bg-[#0097FE] text-white px-6 py-2 rounded-full text-sm font-medium hover:bg-blue-500 transition-colors">
           Join Project
         </button>
         <p className="text-sm text-gray-400">Deadline: {project.deadline}</p>

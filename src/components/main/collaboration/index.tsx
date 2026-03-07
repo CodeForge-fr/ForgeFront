@@ -1,3 +1,4 @@
+import Link from "next/link";
 import ProjectSlider from "./slider";
 
 const Collaboration = () => {
@@ -6,7 +7,7 @@ const Collaboration = () => {
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col justify-between lg:flex-row gap-8">
           <h2 className="w-full lg:w-3/5 text-3xl md:text-5xl text-[#333333] font-medium font-poppins">
-            <b className="text-[#2D3DD1FF] font-bold">Collaborate</b> and
+            <b className="text-[#0097FE] font-bold">Collaborate</b> and
             <br className="hidden md:block" /> bring ideas to life
           </h2>
 
@@ -17,6 +18,12 @@ const Collaboration = () => {
           </p>
         </div>
         <ProjectSlider />
+        <Link
+          href="/collaboration"
+          className="flex items-center gap-2 mt-8 text-white font-medium hover:bg-blue-500 transition-colors cursor-pointer w-max rounded-full px-15 py-2 m-auto bg-[#0097FE]"
+        >
+          View all
+        </Link>
       </div>
     </section>
   );

@@ -10,7 +10,7 @@ const University = () => {
             <br />
             and Projects
           </h2>
-          <p className="w-[65%] lg:w-[43%] text-[#5E6C6A] font-light gap-3 rounded-xl">
+          <p className=" w-full mt-10 text-[#5E6C6A] font-light gap-3 rounded-xl md:w-[65%] lg:w-[43%]">
             Discover top-tier events across all Armenian universities in one
             unified feed. Join hackathons, academic debates, and cultural
             activities designed to foster collaboration and empower the national
