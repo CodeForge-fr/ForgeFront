@@ -7,7 +7,7 @@ const universities = [
   { src: "/images/NUACA.png", alt: "NUACA" },
   { src: "/universities/ysu.png", alt: "University" },
   { src: "/images/AUA.png", alt: "AUA" },
-  { src: "/universities/nuaca.png", alt: "University" },
+  { src: "/universities/npua.png", alt: "University" },
 ];
 
 const UniversityHubsSection = () => {

@@ -1,15 +1,18 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 
 import { useState } from "react";
 import MainComponent from "@/components/main";
 import SignInModal from "@/components/modal/SignInModal";
 import SignUpModal from "@/components/modal/SignUpModal";
-import { useAuth } from "./context/AuthContext";
+import Header from "@/components/main/header/Header";
+import HeroSection from "@/components/main/heroSection/HeroSection";
+import { useAuth } from "@/app/context/AuthContext";
 
 type ModalType = "login" | "register" | null;
 
 export default function Home() {
-  const { isLoggedIn, logout } = useAuth();
+  const { logout } = useAuth();
   const [activeModal, setActiveModal] = useState<ModalType>(null);
 
   const openLogin = () => {
@@ -38,30 +41,17 @@ export default function Home() {
 
   return (
     <div className="relative flex flex-col min-h-screen bg-zinc-50 dark:bg-black">
-      <nav className="p-6 flex justify-end gap-6 bg-blue-400 text-white">
-        {isLoggedIn ? (
-          <button onClick={handleLogout} className="hover:text-red-500">
-            Logout
-          </button>
-        ) : (
-          <>
-            <button onClick={openLogin} className="hover:text-blue-500">
-              Sign In
-            </button>
-            <button onClick={openRegister} className="hover:text-blue-500">
-              Sign Up
-            </button>
-          </>
-        )}
-      </nav>
+      <Header openLogin={openLogin} openRegister={openRegister} />
+
+      <HeroSection />
 
       <MainComponent />
 
       {activeModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4 overflow-y-auto">
           <div className="absolute inset-0" onClick={closeModal} />
+
           <div className="relative z-10 w-full max-w-md max-h-[100vh] rounded-2xl">
-            {" "}
             {activeModal === "login" ? (
               <SignInModal
                 onClose={closeModal}
