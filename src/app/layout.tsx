@@ -4,8 +4,8 @@ import "swiper/css";
 import "./globals.css";
 import { AuthProvider } from "./context/AuthProvider";
 
-import Header from "@/components/main/header/Header";
 import Footer from "@/components/main/footer/Footer";
+import HeaderSection from "@/components/main/header/page";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -40,7 +40,7 @@ export default function RootLayout({
       >
         <AuthProvider>
 
-          <Header />
+          <HeaderSection />
 
           {children}
 

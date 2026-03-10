@@ -5,9 +5,8 @@ import { useState } from "react";
 import MainComponent from "@/components/main";
 import SignInModal from "@/components/modal/SignInModal";
 import SignUpModal from "@/components/modal/SignUpModal";
-import Header from "@/components/main/header/Header";
-import HeroSection from "@/components/main/heroSection/HeroSection";
 import { useAuth } from "@/app/context/AuthContext";
+import HeaderSection from "@/components/main/header/page";
 
 type ModalType = "login" | "register" | null;
 
@@ -41,9 +40,8 @@ export default function Home() {
 
   return (
     <div className="relative flex flex-col min-h-screen bg-zinc-50 dark:bg-black">
-      <Header openLogin={openLogin} openRegister={openRegister} />
 
-      <HeroSection />
+      <HeaderSection openLogin={openLogin} openRegister={openRegister} />
 
       <MainComponent />
 
