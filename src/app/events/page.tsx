@@ -1,22 +1,43 @@
 "use client";
 
-import React, { useState } from "react";
-import { eventsData } from "@/data/eventsData";
+import React, { useEffect, useState } from "react";
 import { EventCard } from "@/components/main/universities/eventCard";
 import EventPagination from "./pagination";
 import EventSidebar from "./eventSideBar";
+import { fetchEvents } from "@/app/api/eventApi";
+import { Event } from "@/types/eventType";
 
 const Events = () => {
-  const [events] = useState(eventsData);
+  const [events, setEvents] = useState<Event[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
   const [currentPage, setCurrentPage] = useState(1);
+
+  useEffect(() => {
+    const getEvents = async () => {
+      try {
+        const data = await fetchEvents();
+        setEvents(data);
+      } catch (error) {
+        console.error("Failed to fetch events:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    getEvents();
+  }, []);
 
   const itemsPerPage = 6;
   const totalPages = Math.ceil(events.length / itemsPerPage);
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentEvents = events.slice(indexOfFirstItem, indexOfLastItem);
+  console.log("Current Events:", currentEvents);
 
   const pageNumbers = Array.from({ length: totalPages }, (_, i) => i + 1);
+
+  if (loading)
+    return <div className="text-center py-20">Loading Events...</div>;
 
   return (
     <section className="px-20 my-10">
@@ -43,7 +64,14 @@ const Events = () => {
           {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-20">
               {currentEvents.map((item) => (
-                <EventCard key={item.id} event={item} />
+                <EventCard
+                  key={item.id}
+                  event={{
+                    ...item,
+                    name: item.name,
+                    daysLeft: item.daysLeft || "Upcoming",
+                  }}
+                />
               ))}
             </div>
           }
