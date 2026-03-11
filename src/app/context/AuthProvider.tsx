@@ -2,7 +2,7 @@
 
 import { useState, useCallback } from "react";
 import type { ReactNode } from "react";
-import { loginProvider, registerProvider } from "@/api/auth";
+import { loginProvider, registerProvider } from "@/app/api/auth";
 import type { IAuth, UserProfile } from "@/types/authType";
 import { AuthContext } from "./AuthContext";
 

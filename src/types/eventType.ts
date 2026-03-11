@@ -1,11 +1,18 @@
-import { StaticImageData } from "next/image";
 
-export interface eventType {
+export interface Event {
   id: number;
-  title: string;
+  name: string;
+  start: string;
+  end: string;
+  isOnline: boolean;
+  location: string;
+  duration: string;
+  isPayable: boolean;
+  isCompleted: boolean;
+  price: number;
+  ageLimit: number;
   description: string;
-  daysLeft: string;
-  image: string | StaticImageData;
-  logo: string | StaticImageData;
-  type: string;
+  image?: string;      
+  logo: string;        
+  daysLeft?: string;
 }
