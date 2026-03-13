@@ -1,13 +1,8 @@
 "use client";
 import { useState } from "react";
-// import { Swiper, SwiperSlide } from "swiper/react";
 import ProjectCard from "./ProjectCard";
-// import SwiperButtons from "./SwiperButtons";
 import { projectsData } from "@/data/projectData";
-// import type { Swiper as SwiperType } from "swiper";
-// import { Navigation } from "swiper/modules";
 
-import "swiper/css";
 
 export default function ProjectSlider() {
   const [list] = useState([
@@ -17,7 +12,7 @@ export default function ProjectSlider() {
     "Tech Support",
   ]);
   const [isActive, setIsActive] = useState<number | null>(0);
-  //   const [swiper, setSwiper] = useState<SwiperType | null>(null);
+  
   return (
     <div className="mt-[60px] rounded-3xl">
       <div className="flex justify-between items-center text-white">
@@ -42,33 +37,7 @@ export default function ProjectSlider() {
           </div>
         </div>
 
-        {/* <SwiperButtons swiper={swiper} /> */}
       </div>
-
-      {/* <Swiper
-        modules={[Navigation]}
-        spaceBetween={24}
-        onSwiper={setSwiper}
-        slidesPerView={1}
-        centeredSlides={false}
-        breakpoints={{
-          640: {
-            slidesPerView: 2,
-            spaceBetween: 20,
-          },
-          1024: {
-            slidesPerView: 3,
-            spaceBetween: 24,
-          },
-        }}
-        className="mt-8 !overflow-visible md:!overflow-hidden"
-      >
-        {projectsData.map((project) => (
-          <SwiperSlide key={project.id} className="mr-5">
-            <ProjectCard project={project} />
-          </SwiperSlide>
-        ))}
-      </Swiper> */}
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-center mt-10 gap-x-5">
         {projectsData.slice(0, 3).map((project, index) => (

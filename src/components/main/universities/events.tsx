@@ -3,7 +3,7 @@ import Image from "next/image";
 import arrow from "../../../../public/icons/arrow.svg";
 import arrowTop from "../../../../public/icons/arrowTop.svg";
 import Link from "next/link";
-// import { fetchEvents } from "@/app/api/eventApi";
+import { fetchEvents } from "@/app/api/eventApi";
 import { useEffect, useState } from "react";
 import { Event } from "@/types/eventType";
 
@@ -11,20 +11,23 @@ export default function EventGrid() {
   const [events, setEvents] = useState<Event[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
 
-//   useEffect(() => {
-//     const getEvents = async () => {
-//       try {
-//         const data = await fetchEvents();
-//         setEvents(data);
-//       } catch (error) {
-//         console.error("Failed to fetch events:", error);
-//       } finally {
-//         setLoading(false);
-//       }
-//     };
+  useEffect(() => {
+    const getEvents = async () => {
+      try {
+        const data = await fetchEvents();
+        setEvents(data);
+      } catch (error) {
+        console.error("Failed to fetch events:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
 
-//     getEvents();
-//   }, []);
+    getEvents();
+  }, []);
+
+  if (loading)
+    return <div className="text-center py-20">Loading Events...</div>;
 
   return (
     <section className="w-full mx-auto mt-[100px]">

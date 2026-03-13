@@ -8,7 +8,11 @@ interface ProjectCardProps {
 function ProjectCard({ project }: ProjectCardProps) {
   return (
     <div
-      className={`w-full h-full bg-white rounded-3xl p-5 flex flex-col gap-5 border-none`}
+      className={`w-full h-full bg-white rounded-3xl p-5 flex flex-col gap-5 border-none `}
+      style={{
+        boxShadow:
+          "2px 2px 20px 0px rgba(0,0,0,0.20), -2px -2px 20px 0px rgba(0,0,0,0.20)",
+      }}
     >
       <div className="flex justify-between items-start">
         <div className="w-full flex items-center justify-between gap-3">
