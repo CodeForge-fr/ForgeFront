@@ -6,7 +6,7 @@ import { ArrowRight } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer className="bg-[#1E90D6] w-full text-white px-10 md:px-20 py-16">
+    <footer className="bg-[#1E90D6] w-full text-white md:px-20 py-16">
       <div className="max-w-7xl mx-auto">
 
         {/* Top */}

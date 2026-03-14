@@ -24,7 +24,7 @@ export default function Header({ openLogin, openRegister }: Props) {
 
   return (
     <header className="absolute top-0 left-0 w-full z-50">
-      <div className="max-w-[100%] mx-auto px-6 py-4 flex items-center justify-between bg-white/5 backdrop-blur-md rounded-b-2xl">
+      <div className="max-w-7xl mx-auto py-4 flex items-center justify-between bg-white/5 backdrop-blur-md rounded-b-2xl">
         <Link
           href={isLoggedIn ? "/" : "/"} // "/profile"
           className="flex text-white text-xl font-bold gap-2"

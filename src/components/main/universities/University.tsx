@@ -5,7 +5,7 @@ const University = () => {
     <section>
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col items-start gap-y-5 lg:flex-row lg:justify-between lg:items-center">
-          <h2 className="w-full lg:w-3/5 text-5xl text-[#333333] font-medium font-poppins">
+          <h2 className="w-full lg:w-3/5 text-5xl text-[#333333] font-medium ">
             <b className="text-[#2D3DD1FF] font-bold">Active</b> Initiatives{" "}
             <br />
             and Projects

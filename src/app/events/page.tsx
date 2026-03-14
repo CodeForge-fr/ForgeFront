@@ -32,7 +32,6 @@ const Events = () => {
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentEvents = events.slice(indexOfFirstItem, indexOfLastItem);
-  console.log("Current Events:", currentEvents);
 
   const pageNumbers = Array.from({ length: totalPages }, (_, i) => i + 1);
 
@@ -47,7 +46,7 @@ const Events = () => {
         </div>
         <div className="flex-2">
           <div className="flex flex-col items-center text-center gap-y-5">
-            <h2 className="w-full text-5xl text-[#333333] font-medium font-poppins">
+            <h2 className="w-full text-5xl text-[#333333] font-medium ">
               <b className="text-[#2D3DD1FF] font-bold">Active</b> Initiatives{" "}
               <br />
               and Projects
