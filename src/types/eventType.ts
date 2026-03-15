@@ -12,7 +12,7 @@ export interface Event {
   price: number;
   ageLimit: number;
   description: string;
-  image?: string;      
+  image: string;      
   logo: string;        
   daysLeft?: string;
 }

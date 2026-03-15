@@ -11,7 +11,7 @@ const Collaboration = () => {
             <br className="hidden md:block" /> bring ideas to life
           </h2>
 
-          <p className="w-full md:w-[80%] lg:w-[40%] text-[#5E6C6A] font-light lg:text-justify font-poppins">
+          <p className="w-full md:w-[80%] lg:w-[40%] text-[#5E6C6A] font-light lg:text-justify ">
             Join forces with students from across Armenia. Find teammates, share
             resources, and turn your student projects into reality through
             cross-university partnerships.
