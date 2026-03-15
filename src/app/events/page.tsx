@@ -11,12 +11,24 @@ const Events = () => {
   const [events, setEvents] = useState<Event[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [currentPage, setCurrentPage] = useState(1);
+  const pageSize = 9;
+  const [totalItems, setTotalItems] = useState(0);
 
   useEffect(() => {
     const getEvents = async () => {
       try {
-        const data = await fetchEvents();
+        const data = await fetchEvents({
+          page: currentPage,
+          pageSize,
+        });
         setEvents(data);
+
+        if (data.length === pageSize) {
+          setTotalItems(currentPage * pageSize + 1);
+        } else {
+          setTotalItems(currentPage * pageSize - (pageSize - data.length));
+        }
+
       } catch (error) {
         console.error("Failed to fetch events:", error);
       } finally {
@@ -25,14 +37,9 @@ const Events = () => {
     };
 
     getEvents();
-  }, []);
+  }, [currentPage]);
 
-  const itemsPerPage = 6;
-  const totalPages = Math.ceil(events.length / itemsPerPage);
-  const indexOfLastItem = currentPage * itemsPerPage;
-  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentEvents = events.slice(indexOfFirstItem, indexOfLastItem);
-
+  const totalPages = Math.ceil(totalItems / pageSize);
   const pageNumbers = Array.from({ length: totalPages }, (_, i) => i + 1);
 
   if (loading)
@@ -62,7 +69,7 @@ const Events = () => {
           {/* EVENTS GRID */}
           {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-20">
-              {currentEvents.map((item) => (
+              {events.map((item) => (
                 <EventCard
                   key={item.id}
                   event={{

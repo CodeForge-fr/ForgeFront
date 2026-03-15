@@ -1,23 +1,27 @@
 import { Event } from "@/types/eventType";
-// import Image from "next/image";
+import Image from "next/image";
 
 interface IEventCard {
   event: Event;
   className?: string;
 }
 
+const BASE_URL =
+  process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:3000";
+
 export const EventCard = ({ event, className }: IEventCard) => {
   return (
     <div
       className={`flex flex-col justify-between md:justify-start gap-y-8 ${className}`}
     >
-      <div className="relative aspect-[4/5] rounded-[32px] overflow-hidden group">
-        {/* <Image
-          src={event.image}
+      <div className="relative w-full rounded-[32px] overflow-hidden group bg-gray-100">
+        <Image
+          src={`${BASE_URL}${event.image}`}
           alt={event.name}
-          fill
           className="object-cover transition-transform duration-500 group-hover:scale-105"
-        /> */}
+          width={300}
+          height={300}
+        />
 
         <div className="absolute top-6 left-6">
           <div className={`h-12 ${event.logo === "AUA" ? "w-20" : "w-30"}`}>
