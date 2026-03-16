@@ -54,7 +54,7 @@ const HeroSlider = () => {
 
       <div className="relative z-10 flex flex-col items-center justify-center h-full text-center text-white px-4">
         {/* Search */}
-        <div className="mb-10 w-full max-w-[65%]">
+        <div className="hidden md:flex mb-10 w-full max-w-[65%]">
           <input
             type="text"
             placeholder="Search"
@@ -62,17 +62,26 @@ const HeroSlider = () => {
           />
         </div>
 
-        <div className="flex flex-col gap-y-5">
-          <p className="md:text-3xl lg:text-6xl tracking-widest">
-            {slide.date}
-          </p>
+        <div className="w-1 h-12 bg-[#FFFFFF33] flex justify-center rounded"></div>
 
-          <h1 className="md:text-5xl lg:text-8xl font-bold">
+        <div className="flex flex-col gap-y-5 mt-10 sm:mt-0">
+          <p className="text-3xl lg:text-6xl tracking-widest">{slide.date}</p>
+
+          <h1 className="text-5xl md:text-5xl lg:text-8xl font-bold">
             {slide.title}
           </h1>
         </div>
 
-        <p className="mt-4 text-lg">📍 {slide.location}</p>
+        <div className="flex flex-col gap-y-5 mt-5 lg:hidden">
+          <p className="text-md font-normal md:text-3xl italic">
+            BY Imperial Orchestra
+          </p>
+          <p className="text-md md:text-3xl font-semibold uppercase">
+            symphonic soundtrack show
+          </p>
+        </div>
+
+        <p className="mt-12 md:mt-4 text-lg md:text-[40px]">📍 {slide.location}</p>
 
         <div className="flex gap-4 mt-8">
           <button className="w-[170px] border border-white py-3 rounded-full">

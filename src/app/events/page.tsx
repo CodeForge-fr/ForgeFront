@@ -53,7 +53,7 @@ const Events = () => {
         </div>
         <div className="flex-2">
           <div className="flex flex-col items-center text-center gap-y-5">
-            <h2 className="w-full text-5xl text-[#333333] font-medium ">
+            <h2 className="w-full text-4xl md:text-5xl text-[#333333] font-medium ">
               <b className="text-[#2D3DD1FF] font-bold">Active</b> Initiatives{" "}
               <br />
               and Projects

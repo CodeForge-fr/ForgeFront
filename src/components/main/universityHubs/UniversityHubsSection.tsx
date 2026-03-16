@@ -12,11 +12,11 @@ const universities = [
 
 const UniversityHubsSection = () => {
   return (
-    <section className="py-24">
-      <div className="max-w-xl mx-auto px-4 md:max-w-4xl lg:max-w-7xl">
+    <section className="py-20 md:py-24">
+      <div className="max-w-xl mx-auto md:px-4 md:max-w-4xl lg:max-w-7xl">
         {/* Top Content */}
         <div className="flex flex-col gap-y-5 lg:flex-row justify-between items-start mb-20">
-          <h2 className="text-5xl font-semibold font-poppins text-[#333] w-1/2 leading-tight">
+          <h2 className="text-4xl md:text-5xl font-semibold font-poppins text-[#333] w-full md:w-1/2 leading-tight">
             <span className="text-[#0097FE]">University Hubs</span>
           </h2>
 
@@ -32,7 +32,18 @@ const UniversityHubsSection = () => {
         <div className="flex flex-col items-center gap-16">
           {/* Top Row - 4 logos */}
 
-          <div className="lg:hidden grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-20 place-items-center w-full">
+          <div className="sm:hidden mx-auto">
+            <Image
+              src={universities[2].src}
+              alt={universities[2].alt}
+              width={230}
+              height={150}
+              style={{ height: "auto" }}
+              className="object-contain"
+            />
+          </div>
+
+          <div className="hidden sm:grid sm:grid-cols-3 lg:grid-cols-4 gap-20 place-items-center w-full lg:hidden">
             {universities.slice(2, 5).map((uni, index) => (
               <Image
                 key={index}

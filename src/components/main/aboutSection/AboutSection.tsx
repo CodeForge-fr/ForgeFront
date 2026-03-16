@@ -55,14 +55,14 @@ const AboutSection = () => {
   }, []);
 
   return (
-    <section className="py-24">
-      <div className="max-w-xl md:max-w-4xl lg:max-w-7xl mx-auto px-6">
+    <section className="py-20 md:py-24">
+      <div className="max-w-xl md:max-w-4xl lg:max-w-7xl mx-auto px-0 sm:px-6">
         {/* GRID */}
         <div
           className={`${pathname == "/about" ? "flex flex-col items-center" : "flex flex-col gap-16"}`}
         >
           <div
-            className={`${pathname == "/about" ? "w-full text-center" : "text-start"} w-[61%] flex flex-col gap-y-5 lg:w-full lg:flex-row justify-between`}
+            className={`${pathname == "/about" ? "w-full text-center" : "text-start"} w-full md:w-[61%] flex flex-col gap-y-5 lg:w-full lg:flex-row justify-between`}
           >
             {/* Title */}
 
@@ -72,7 +72,9 @@ const AboutSection = () => {
                   Our accomplishment
                 </h2>
               ) : (
-                <h2 className="text-5xl lg:text-4xl font-bold text-[#0097FE]">About Us</h2>
+                <h2 className="text-4xl sm:text-5xl lg:text-4xl font-bold text-[#0097FE]">
+                  About Us
+                </h2>
               )}
             </div>
             <div className="md:flex-1">
@@ -88,9 +90,9 @@ const AboutSection = () => {
           </div>
 
           <div
-            className={`${pathname == "/about" ? "w-full" : "flex items-end justify-between"} `}
+            className={`${pathname == "/about" ? "w-full" : "flex flex-col gap-y-10 items-start lg:flex-row sm:items-end sm:justify-between"} `}
           >
-            <div className="w-[45%]">
+            <div className="w-full lg:w-[45%]">
               <div
                 ref={statsRef}
                 className={`${pathname == "/about" ? "grid grid-cols-3 my-[87px]" : "grid grid-cols-3 mt-16"}`}
@@ -99,7 +101,7 @@ const AboutSection = () => {
                   className={`${pathname == "/about" ? "pr-0" : "pr-4"} border-r-1 flex flex-col items-end`}
                 >
                   <div
-                    className={`${pathname == "/about" ? "text-[80px] font-normal" : "text-4xl font-normal"}  text-[#333333]`}
+                    className={`${pathname == "/about" ? "text-[80px] font-normal" : "text-5xl md:text-4xl font-normal"} text-[#333333]`}
                   >
                     +{studentsCount}K
                   </div>
@@ -114,7 +116,7 @@ const AboutSection = () => {
                   className={`${pathname == "/about" ? "pr-0" : "pr-4"} border-r-1 flex flex-col items-end`}
                 >
                   <div
-                    className={`${pathname == "/about" ? "text-[80px] font-normal text-[#333333]" : "text-4xl font-normal text-[#333333]"}`}
+                    className={`${pathname == "/about" ? "text-[80px] font-normal text-[#333333]" : "text-5xl md:text-4xl font-normal text-[#333333]"}`}
                   >
                     +{universitiesCount}
                   </div>
@@ -125,7 +127,7 @@ const AboutSection = () => {
                   className={`${pathname == "/about" ? "pr-0" : "pr-4 border-r-1 flex flex-col items-end"} `}
                 >
                   <div
-                    className={`${pathname == "/about" ? "text-[80px] font-normal text-[#333333]" : "text-4xl font-normal text-[#333333]"}`}
+                    className={`${pathname == "/about" ? "text-[80px] font-normal text-[#333333]" : "text-5xl md:text-4xl font-normal text-[#333333]"}`}
                   >
                     +{projectsCount}
                   </div>
@@ -135,7 +137,7 @@ const AboutSection = () => {
             </div>
 
             <div
-              className={`${pathname == "/about" ? "h-[500px]" : "w-1/2 h-full"} rounded-2xl overflow-hidden shadow-md mt-auto`}
+              className={`${pathname == "/about" ? "h-[500px]" : "w-full h-full"} lg:w-1/2 rounded-2xl overflow-hidden shadow-md mt-auto`}
             >
               {pathname == "/about" ? (
                 <Image
