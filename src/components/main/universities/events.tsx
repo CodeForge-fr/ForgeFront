@@ -10,11 +10,16 @@ import { Event } from "@/types/eventType";
 export default function EventGrid() {
   const [events, setEvents] = useState<Event[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
+  const [page] = useState(1);
+  const [pageSize] = useState(10);
 
   useEffect(() => {
     const getEvents = async () => {
       try {
-        const data = await fetchEvents();
+        const data = await fetchEvents({
+          page,
+          pageSize,
+        });
         setEvents(data);
       } catch (error) {
         console.error("Failed to fetch events:", error);
