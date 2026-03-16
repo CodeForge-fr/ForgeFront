@@ -54,7 +54,7 @@ const HeroSlider = () => {
 
       <div className="relative z-10 flex flex-col items-center justify-center h-full text-center text-white px-4">
         {/* Search */}
-        <div className="mb-10 w-full max-w-[700px]">
+        <div className="mb-10 w-full max-w-[65%]">
           <input
             type="text"
             placeholder="Search"
@@ -62,18 +62,24 @@ const HeroSlider = () => {
           />
         </div>
 
-        <p className="text-lg tracking-widest">{slide.date}</p>
+        <div className="flex flex-col gap-y-5">
+          <p className="md:text-3xl lg:text-6xl tracking-widest">
+            {slide.date}
+          </p>
 
-        <h1 className="text-6xl font-bold mt-2">{slide.title}</h1>
+          <h1 className="md:text-5xl lg:text-8xl font-bold">
+            {slide.title}
+          </h1>
+        </div>
 
         <p className="mt-4 text-lg">📍 {slide.location}</p>
 
         <div className="flex gap-4 mt-8">
-          <button className="border border-white px-6 py-2 rounded-full">
+          <button className="w-[170px] border border-white py-3 rounded-full">
             View Details
           </button>
 
-          <button className="bg-blue-500 px-6 py-2 rounded-full">
+          <button className="w-[170px] bg-blue-500 py-3 rounded-full">
             Book Now
           </button>
         </div>

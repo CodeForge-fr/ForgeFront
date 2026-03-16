@@ -6,7 +6,7 @@ import { ArrowRight } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer className="bg-[#1E90D6] w-full text-white md:px-20 py-16">
+    <footer className="bg-[#1E90D6] w-full text-white py-8 md:px-20 lg:py-16">
       <div className="max-w-7xl mx-auto">
 
         {/* Top */}
@@ -40,7 +40,7 @@ export default function Footer() {
               Connecting students, universities, and opportunities
             </h3>
 
-            <div className="grid grid-cols-3 gap-10 text-sm">
+            <div className="grid grid-cols-2 lg:grid-cols-3 gap-10 text-sm">
 
               {/* Menu */}
               <div>

@@ -23,18 +23,19 @@ export default function Header({ openLogin, openRegister }: Props) {
   };
 
   return (
-    <header className="absolute top-0 left-0 w-full z-50">
-      <div className="max-w-7xl mx-auto py-4 flex items-center justify-between bg-white/5 backdrop-blur-md rounded-b-2xl">
+    <header className="absolute top-0 left-0 w-full z-50 bg-white/5 backdrop-blur-md rounded-b-2xl">
+      <div className="max-w-xl md:max-w-4xl mx-auto px-4 lg:max-w-7xl py-[26px] flex items-center justify-between">
         <Link
           href={isLoggedIn ? "/" : "/"} // "/profile"
-          className="flex text-white text-xl font-bold gap-2"
+          className="flex text-white text-xl font-normal gap-2"
         >
-          <span className="text-blue-500">Uni</span>
-          <span className="text-gray-500">Link</span>
+          <span>
+            <b className="text-blue-500 font-bold">Uni</b>Link
+          </span>
         </Link>
 
         {/* DESKTOP NAV */}
-        <nav className="hidden md:flex items-center gap-8 text-gray-500 text-sm">
+        <nav className="hidden lg:flex items-center gap-8 text-gray-500 text-sm">
           <Link href="/events">Events</Link>
           <Link href="/projects">Projects</Link>
           <Link href="/partners">Partners</Link>
@@ -45,7 +46,7 @@ export default function Header({ openLogin, openRegister }: Props) {
         {/* RIGHT SIDE */}
         <div className="flex items-center gap-4">
           {/* JOIN BUTTON */}
-          <div className="relative hidden md:block">
+          <div className="relative hidden lg:block">
             <button
               onClick={() => setOpenMenu(!openMenu)}
               className="bg-blue-500 hover:bg-blue-600 text-white px-5 py-2 rounded-full text-sm"
@@ -91,7 +92,7 @@ export default function Header({ openLogin, openRegister }: Props) {
 
           {/* BURGER BUTTON */}
           <button
-            className="md:hidden text-white"
+            className="lg:hidden text-white"
             onClick={() => setMobileMenu(!mobileMenu)}
           >
             {mobileMenu ? <X size={26} /> : <Menu size={26} />}
@@ -101,7 +102,7 @@ export default function Header({ openLogin, openRegister }: Props) {
 
       {/* MOBILE MENU */}
       {mobileMenu && (
-        <div className="md:hidden bg-black/90 backdrop-blur-lg text-white px-6 py-6 flex flex-col gap-6">
+        <div className="lg:hidden bg-black/90 backdrop-blur-lg text-white px-6 py-6 flex flex-col gap-6">
           <Link href="/events">Events</Link>
           <Link href="/projects">Projects</Link>
           <Link href="/partners">Partners</Link>

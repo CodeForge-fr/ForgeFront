@@ -56,91 +56,92 @@ const AboutSection = () => {
 
   return (
     <section className="py-24">
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-xl md:max-w-4xl lg:max-w-7xl mx-auto px-6">
         {/* GRID */}
         <div
-          className={`${pathname == "/about" ? "flex flex-col items-center" : "grid md:grid-cols-2 gap-16 items-stretch"}`}
+          className={`${pathname == "/about" ? "flex flex-col items-center" : "flex flex-col gap-16"}`}
         >
-          {/* LEFT COLUMN */}
           <div
-            className={`${pathname == "/about" ? "w-full text-center" : "text-start"} flex flex-col justify-between`}
+            className={`${pathname == "/about" ? "w-full text-center" : "text-start"} w-[61%] flex flex-col gap-y-5 lg:w-full lg:flex-row justify-between`}
           >
             {/* Title */}
 
-            {pathname == "/about" ? (
-              <h2 className="text-xl font-normal text-[#333333]">
-                Our accomplishment
-              </h2>
-            ) : (
-              <h2 className="text-4xl font-bold text-[#2D3DD1]">About Us</h2>
-            )}
-
-            {/* Stats */}
-            <div
-              ref={statsRef}
-              className={`${pathname == "/about" ? "grid grid-cols-3 my-[87px]" : "flex items-center gap-12 mt-16"}`}
-            >
-              <div
-                className={`${pathname == "/about" ? "pr-0" : "pr-4"} border-r-1`}
-              >
-                <div
-                  className={`${pathname == "/about" ? "text-[80px] font-normal" : "text-4xl font-bold"}  text-[#333333]`}
-                >
-                  +{studentsCount}K
-                </div>
-                <p
-                  className={`${pathname == "/about" ? "text-md" : "text-sm"} mt-2 text-[#5E6C6A] `}
-                >
-                  Students
+            <div className="md:flex-1">
+              {pathname == "/about" ? (
+                <h2 className="text-xl font-normal text-[#333333]">
+                  Our accomplishment
+                </h2>
+              ) : (
+                <h2 className="text-5xl lg:text-4xl font-bold text-[#0097FE]">About Us</h2>
+              )}
+            </div>
+            <div className="md:flex-1">
+              {pathname !== "/about" && (
+                <p className="text-[#5E6C6A] leading-relaxed mb-8">
+                  Our platform creates a dynamic ecosystem connecting 50,000+
+                  students and 10+ academic institutions. By fostering
+                  innovation through 500+ collaborative projects, we bridge the
+                  gap between education and real-world impact.
                 </p>
-              </div>
-
-              <div
-                className={`${pathname == "/about" ? "pr-0" : "pr-4"} border-r-1`}
-              >
-                <div
-                  className={`${pathname == "/about" ? "text-[80px] font-normal text-[#333333]" : "text-4xl font-bold text-[#333333]"}`}
-                >
-                  +{universitiesCount}
-                </div>
-                <p className="text-[#5E6C6A] text-sm mt-2">Universities</p>
-              </div>
-
-              <div
-                className={`${pathname == "/about" ? "pr-0" : "pr-4 border-r-1"} `}
-              >
-                <div
-                  className={`${pathname == "/about" ? "text-[80px] font-normal text-[#333333]" : "text-4xl font-bold text-[#333333]"}`}
-                >
-                  +{projectsCount}
-                </div>
-                <p className="text-[#5E6C6A] text-sm mt-2">Joint Projects</p>
-              </div>
+              )}
             </div>
           </div>
 
-          {/* RIGHT COLUMN */}
           <div
-            className={`${pathname == "/about" ? "w-full" : "flex flex-col"} `}
+            className={`${pathname == "/about" ? "w-full" : "flex items-end justify-between"} `}
           >
-            {pathname !== "/about" && (
-              <p className="text-[#5E6C6A] leading-relaxed mb-8">
-                Our platform creates a dynamic ecosystem connecting 50,000+
-                students and 10+ academic institutions. By fostering innovation
-                through 500+ collaborative projects, we bridge the gap between
-                education and real-world impact.
-              </p>
-            )}
+            <div className="w-[45%]">
+              <div
+                ref={statsRef}
+                className={`${pathname == "/about" ? "grid grid-cols-3 my-[87px]" : "grid grid-cols-3 mt-16"}`}
+              >
+                <div
+                  className={`${pathname == "/about" ? "pr-0" : "pr-4"} border-r-1 flex flex-col items-end`}
+                >
+                  <div
+                    className={`${pathname == "/about" ? "text-[80px] font-normal" : "text-4xl font-normal"}  text-[#333333]`}
+                  >
+                    +{studentsCount}K
+                  </div>
+                  <p
+                    className={`${pathname == "/about" ? "text-md" : "text-sm"} mt-2 text-[#5E6C6A] `}
+                  >
+                    Students
+                  </p>
+                </div>
+
+                <div
+                  className={`${pathname == "/about" ? "pr-0" : "pr-4"} border-r-1 flex flex-col items-end`}
+                >
+                  <div
+                    className={`${pathname == "/about" ? "text-[80px] font-normal text-[#333333]" : "text-4xl font-normal text-[#333333]"}`}
+                  >
+                    +{universitiesCount}
+                  </div>
+                  <p className="text-[#5E6C6A] text-sm mt-2">Universities</p>
+                </div>
+
+                <div
+                  className={`${pathname == "/about" ? "pr-0" : "pr-4 border-r-1 flex flex-col items-end"} `}
+                >
+                  <div
+                    className={`${pathname == "/about" ? "text-[80px] font-normal text-[#333333]" : "text-4xl font-normal text-[#333333]"}`}
+                  >
+                    +{projectsCount}
+                  </div>
+                  <p className="text-[#5E6C6A] text-sm mt-2">Join Projects</p>
+                </div>
+              </div>
+            </div>
 
             <div
-              className={`${pathname == "/about" ? "h-[500px]" : "h-full"} rounded-2xl overflow-hidden shadow-md mt-auto`}
+              className={`${pathname == "/about" ? "h-[500px]" : "w-1/2 h-full"} rounded-2xl overflow-hidden shadow-md mt-auto`}
             >
               {pathname == "/about" ? (
                 <Image
                   src="/images/universities.jpg"
                   alt="students"
-                  width={600}
-                  height={500}
+                  fill
                   className="w-full h-auto object-cover"
                   style={{ objectPosition: "40% 20%" }}
                 />
@@ -148,7 +149,7 @@ const AboutSection = () => {
                 <Image
                   src="/images/about.png"
                   alt="students"
-                  width={600}
+                  width={522}
                   height={400}
                   className="w-full h-auto object-cover"
                   priority

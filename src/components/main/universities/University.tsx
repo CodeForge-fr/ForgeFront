@@ -3,7 +3,7 @@ import EventGrid from "./events";
 const University = () => {
   return (
     <section>
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-xl mx-auto px-4 md:max-w-4xl lg:max-w-7xl">
         <div className="flex flex-col items-start gap-y-5 lg:flex-row lg:justify-between lg:items-center">
           <h2 className="w-full lg:w-3/5 text-5xl text-[#333333] font-medium ">
             <b className="text-[#2D3DD1FF] font-bold">Active</b> Initiatives{" "}
