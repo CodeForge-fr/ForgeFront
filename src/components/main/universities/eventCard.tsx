@@ -14,13 +14,12 @@ export const EventCard = ({ event, className }: IEventCard) => {
     <div
       className={`flex flex-col justify-between md:justify-start gap-y-8 ${className}`}
     >
-      <div className="relative w-full rounded-[32px] overflow-hidden group bg-gray-100">
+      <div className="relative w-full h-[400px] rounded-[32px] overflow-hidden group bg-gray-100">
         <Image
           src={`${BASE_URL}${event.image}`}
           alt={event.name}
-          className="object-cover transition-transform duration-500 group-hover:scale-105"
-          width={300}
-          height={300}
+          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+          fill
         />
 
         <div className="absolute top-6 left-6">
