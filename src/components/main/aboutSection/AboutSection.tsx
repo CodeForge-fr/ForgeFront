@@ -101,7 +101,7 @@ const AboutSection = () => {
                   className={`${pathname == "/about" ? "pr-0" : "pr-4"} border-r-1 flex flex-col items-end`}
                 >
                   <div
-                    className={`${pathname == "/about" ? "text-[80px] font-normal" : "text-5xl md:text-4xl font-normal"} text-[#333333]`}
+                    className={`${pathname == "/about" ? "text-[80px] font-normal" : "text-4xl font-normal"} text-[#333333]`}
                   >
                     +{studentsCount}K
                   </div>
@@ -116,7 +116,7 @@ const AboutSection = () => {
                   className={`${pathname == "/about" ? "pr-0" : "pr-4"} border-r-1 flex flex-col items-end`}
                 >
                   <div
-                    className={`${pathname == "/about" ? "text-[80px] font-normal text-[#333333]" : "text-5xl md:text-4xl font-normal text-[#333333]"}`}
+                    className={`${pathname == "/about" ? "text-[80px] font-normal text-[#333333]" : "text-4xl font-normal text-[#333333]"}`}
                   >
                     +{universitiesCount}
                   </div>
@@ -127,7 +127,7 @@ const AboutSection = () => {
                   className={`${pathname == "/about" ? "pr-0" : "pr-4 border-r-1 flex flex-col items-end"} `}
                 >
                   <div
-                    className={`${pathname == "/about" ? "text-[80px] font-normal text-[#333333]" : "text-5xl md:text-4xl font-normal text-[#333333]"}`}
+                    className={`${pathname == "/about" ? "text-[80px] font-normal text-[#333333]" : "text-4xl font-normal text-[#333333]"}`}
                   >
                     +{projectsCount}
                   </div>

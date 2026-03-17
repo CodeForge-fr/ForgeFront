@@ -6,21 +6,21 @@ import { ArrowRight } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer className="bg-[#1E90D6] w-full text-white py-8 md:px-20 lg:py-16">
-      <div className="max-w-7xl mx-auto">
+    <footer className="bg-[#1E90D6] w-full text-white py-8 sm:px-6 md:px-6 lg:px-20 lg:py-16">
+      <div className="max-w-xl md:max-w-7xl mx-auto px-4 md:px-0">
 
         {/* Top */}
         <div className="grid md:grid-cols-2 gap-16 mb-16">
 
           {/* Left */}
           <div>
-            <h2 className="text-4xl font-semibold mb-10">Unilink</h2>
+            <h2 className="text-6xl sm:text-4xl font-semibold mb-10">Unilink</h2>
 
-            <p className="text-sm opacity-80 mb-4">
+            <p className="text-sm opacity-80 mb-4 w-[75%] md:w-full">
               Stay updated with the latest cross-university events
             </p>
 
-            <div className="flex items-center border-b border-white/40 pb-2 max-w-md">
+            <div className="flex items-center border-b border-white/40 pb-2 w-[75%] sm:max-w-md">
               <input
                 type="email"
                 placeholder="Your email address"
@@ -36,7 +36,7 @@ export default function Footer() {
 
           {/* Right */}
           <div className="flex flex-col gap-10">
-            <h3 className="text-2xl font-semibold max-w-md">
+            <h3 className="text-4xl sm:text-2xl font-semibold max-w-md">
               Connecting students, universities, and opportunities
             </h3>
 
