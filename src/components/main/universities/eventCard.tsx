@@ -14,7 +14,7 @@ export const EventCard = ({ event, className }: IEventCard) => {
     <div
       className={`flex flex-col justify-between md:justify-start gap-y-8 ${className}`}
     >
-      <div className="relative w-full h-[400px] rounded-[32px] overflow-hidden group bg-gray-100">
+      <div className="relative w-full h-[480px] rounded-[32px] overflow-hidden group bg-gray-100">
         <Image
           src={`${BASE_URL}${event.image}`}
           alt={event.name}

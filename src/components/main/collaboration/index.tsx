@@ -3,10 +3,10 @@ import ProjectSlider from "./slider";
 
 const Collaboration = () => {
   return (
-    <section className="mt-[40px] mb-[95px] md:mt-[115px]">
-      <div className="max-w-7xl mx-auto">
+    <section className="mt-[40px] md:mt-[115px]">
+      <div className="mx-auto md:px-4 max-w-xl md:max-w-4xl lg:max-w-7xl">
         <div className="flex flex-col justify-between lg:flex-row gap-8">
-          <h2 className="w-full lg:w-3/5 text-3xl md:text-5xl text-[#333333] text-4xl md:font-medium font-poppins">
+          <h2 className="w-full text-[#333333] text-4xl md:text-5xl md:font-medium font-poppins lg:w-3/5">
             <b className="text-[#0097FE] font-bold">Collaborate</b> and
             <br className="hidden md:block" /> bring ideas to life
           </h2>
