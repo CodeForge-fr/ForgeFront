@@ -77,28 +77,31 @@ const AboutSection = () => {
                 </h2>
               )}
             </div>
-            <div className="md:flex-1">
-              {pathname !== "/about" && (
+
+            {pathname !== "/about" && (
+              <div className="md:flex-1">
                 <p className="text-[#5E6C6A] leading-relaxed mb-8">
                   Our platform creates a dynamic ecosystem connecting 50,000+
                   students and 10+ academic institutions. By fostering
                   innovation through 500+ collaborative projects, we bridge the
                   gap between education and real-world impact.
                 </p>
-              )}
-            </div>
+              </div>
+            )}
           </div>
 
           <div
             className={`${pathname == "/about" ? "w-full" : "flex flex-col gap-y-10 items-start lg:flex-row sm:items-end sm:justify-between"} `}
           >
-            <div className="w-full lg:w-[45%]">
+            <div
+              className={`${pathname == "/about" ? "w-full" : "w-full lg:w-[45%]"}`}
+            >
               <div
                 ref={statsRef}
                 className={`${pathname == "/about" ? "grid grid-cols-3 my-[87px]" : "grid grid-cols-3 mt-16"}`}
               >
                 <div
-                  className={`${pathname == "/about" ? "pr-0" : "pr-4"} border-r-1 flex flex-col items-end`}
+                  className={`${pathname == "/about" ? "pr-0 items-center" : "pr-4 items-end"} border-r-1 flex flex-col `}
                 >
                   <div
                     className={`${pathname == "/about" ? "text-[80px] font-normal" : "text-4xl font-normal"} text-[#333333]`}
@@ -113,7 +116,7 @@ const AboutSection = () => {
                 </div>
 
                 <div
-                  className={`${pathname == "/about" ? "pr-0" : "pr-4"} border-r-1 flex flex-col items-end`}
+                  className={`${pathname == "/about" ? "pr-0 items-center" : "pr-4 items-end"} border-r-1 flex flex-col`}
                 >
                   <div
                     className={`${pathname == "/about" ? "text-[80px] font-normal text-[#333333]" : "text-4xl font-normal text-[#333333]"}`}
@@ -124,7 +127,7 @@ const AboutSection = () => {
                 </div>
 
                 <div
-                  className={`${pathname == "/about" ? "pr-0" : "pr-4 border-r-1 flex flex-col items-end"} `}
+                  className={`${pathname == "/about" ? "pr-0 flex flex-col items-center" : "pr-4 border-r-1 flex flex-col items-end"} `}
                 >
                   <div
                     className={`${pathname == "/about" ? "text-[80px] font-normal text-[#333333]" : "text-4xl font-normal text-[#333333]"}`}
@@ -137,13 +140,14 @@ const AboutSection = () => {
             </div>
 
             <div
-              className={`${pathname == "/about" ? "h-[500px]" : "w-full h-full"} lg:w-1/2 rounded-2xl overflow-hidden shadow-md mt-auto`}
+              className={`${pathname == "/about" ? "w-full h-[500px]" : "w-full h-full lg:w-1/2"}  rounded-2xl overflow-hidden shadow-md mt-auto`}
             >
               {pathname == "/about" ? (
                 <Image
                   src="/images/universities.jpg"
                   alt="students"
-                  fill
+                  width={522}
+                  height={400}
                   className="w-full h-auto object-cover"
                   style={{ objectPosition: "40% 20%" }}
                 />
