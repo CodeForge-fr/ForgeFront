@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 
 const slides = [
   {
@@ -29,6 +30,7 @@ const slides = [
 
 const HeroSlider = () => {
   const [index, setIndex] = useState(0);
+  const pathname = usePathname();
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -41,7 +43,9 @@ const HeroSlider = () => {
   const slide = slides[index];
 
   return (
-    <section className="relative w-full h-screen overflow-hidden left-1/2 -translate-x-1/2">
+    <section
+      className={`${pathname == "/profile" ? "hidden" : "relative w-full h-screen overflow-hidden left-1/2 -translate-x-1/2"}`}
+    >
       <Image
         src={slide.image}
         alt="slide"
@@ -81,7 +85,9 @@ const HeroSlider = () => {
           </p>
         </div>
 
-        <p className="mt-12 md:mt-4 text-lg md:text-[40px]">📍 {slide.location}</p>
+        <p className="mt-12 md:mt-4 text-lg md:text-[40px]">
+          📍 {slide.location}
+        </p>
 
         <div className="flex gap-4 mt-8">
           <button className="w-[170px] border border-white py-3 rounded-full">

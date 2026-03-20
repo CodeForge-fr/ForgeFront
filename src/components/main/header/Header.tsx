@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useAuth } from "../../../app/context/AuthContext";
 import { Menu, X } from "lucide-react";
 import { usePathname } from "next/navigation";
+import { IoPerson } from "react-icons/io5";
 
 type Props = {
   openLogin?: () => void;
@@ -17,6 +18,12 @@ export default function Header({ openLogin, openRegister }: Props) {
   const [openMenu, setOpenMenu] = useState(false);
   const [mobileMenu, setMobileMenu] = useState(false);
   const pathname = usePathname();
+  const [mounted, setMounted] = React.useState(false); // Add this
+
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
+
   const handleLogout = () => {
     logout();
     window.history.replaceState(null, "", "/");
@@ -24,11 +31,13 @@ export default function Header({ openLogin, openRegister }: Props) {
   };
 
   return (
-    <header className="absolute top-0 left-0 w-full z-50 bg-white/5 backdrop-blur-md rounded-b-2xl">
+    <header
+      className={`${pathname == "/profile" ? "bg-[#0097FE] static" : "bg-white/5 rounded-b-2xl"} absolute top-0 left-0 w-full z-50 backdrop-blur-md`}
+    >
       <div className="max-w-xl md:max-w-4xl mx-auto px-4 lg:max-w-7xl py-[26px] flex items-center justify-between">
         <Link
           href={isLoggedIn ? "/" : "/"} // "/profile"
-          className={`${pathname == "/about" ? "text-black" : "text-white"} flex  text-xl font-normal gap-2`}
+          className={`${pathname == "/about" ? "text-black" : "text-white"} flex text-xl font-normal gap-2`}
         >
           <span>
             <b className="text-blue-500 font-bold">Uni</b>Link
@@ -36,7 +45,9 @@ export default function Header({ openLogin, openRegister }: Props) {
         </Link>
 
         {/* DESKTOP NAV */}
-        <nav className="hidden lg:flex items-center gap-8 text-gray-500 text-sm">
+        <nav
+          className={`${pathname == "/profile" ? "text-[#FFFFFF]" : "text-gray-500"} hidden lg:flex items-center gap-8 text-sm`}
+        >
           <Link href="/events">Events</Link>
           <Link href="/projects">Projects</Link>
           <Link href="/partners">Partners</Link>
@@ -48,12 +59,18 @@ export default function Header({ openLogin, openRegister }: Props) {
         <div className="flex items-center gap-4">
           {/* JOIN BUTTON */}
           <div className="relative hidden lg:block">
-            <button
-              onClick={() => setOpenMenu(!openMenu)}
-              className="bg-blue-500 hover:bg-blue-600 text-white px-5 py-2 rounded-full text-sm"
-            >
-              Join the platform
-            </button>
+            {mounted && isLoggedIn ? (
+              <Link href="/profile">
+                <IoPerson color="white" />
+              </Link>
+            ) : (
+              <button
+                onClick={() => setOpenMenu(!openMenu)}
+                className="bg-blue-500 hover:bg-blue-600 text-white px-5 py-2 rounded-full text-sm"
+              >
+                Join the platform
+              </button>
+            )}
 
             {openMenu && (
               <div className="absolute right-0 top-12 bg-white rounded-xl shadow-lg w-40 text-black flex flex-col overflow-hidden">
@@ -112,9 +129,17 @@ export default function Header({ openLogin, openRegister }: Props) {
 
           <div className="border-t border-white/20 pt-4 flex flex-col gap-3">
             {isLoggedIn ? (
-              <button onClick={handleLogout} className="text-left text-red-400">
-                Logout
-              </button>
+              <>
+                <Link href="/profile">
+                  <IoPerson />
+                </Link>
+                <button
+                  onClick={handleLogout}
+                  className="text-left text-red-400"
+                >
+                  Logout
+                </button>
+              </>
             ) : (
               <>
                 <button
