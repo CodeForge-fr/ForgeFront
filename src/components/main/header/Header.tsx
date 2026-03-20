@@ -32,14 +32,16 @@ export default function Header({ openLogin, openRegister }: Props) {
 
   return (
     <header
-      className={`${pathname == "/profile" ? "bg-[#0097FE] static" : "bg-white/5 rounded-b-2xl"} absolute top-0 left-0 w-full z-50 backdrop-blur-md`}
+      className={`${pathname == "/profile" ? "bg-white md:bg-[#0097FE] static" : "bg-white/5 rounded-b-2xl"} absolute top-0 left-0 w-full z-50 backdrop-blur-md`}
     >
       <div className="max-w-xl md:max-w-4xl mx-auto px-4 lg:max-w-7xl py-[26px] flex items-center justify-between">
         <Link
           href={isLoggedIn ? "/" : "/"} // "/profile"
           className={`${pathname == "/about" ? "text-black" : "text-white"} flex text-xl font-normal gap-2`}
         >
-          <span>
+          <span
+            className={`${pathname == "/profile" ? "text-[#333333] md:text-white" : "text-white"}`}
+          >
             <b className="text-blue-500 font-bold">Uni</b>Link
           </span>
         </Link>
@@ -110,7 +112,7 @@ export default function Header({ openLogin, openRegister }: Props) {
 
           {/* BURGER BUTTON */}
           <button
-            className="lg:hidden text-white"
+            className={`${pathname == "/profile" ? "text-[#333333] md:text-white" : "text-white"} lg:hidden `}
             onClick={() => setMobileMenu(!mobileMenu)}
           >
             {mobileMenu ? <X size={26} /> : <Menu size={26} />}
@@ -120,7 +122,7 @@ export default function Header({ openLogin, openRegister }: Props) {
 
       {/* MOBILE MENU */}
       {mobileMenu && (
-        <div className="lg:hidden bg-black/90 backdrop-blur-lg text-white px-6 py-6 flex flex-col gap-6">
+        <div className={`${pathname == '/profile' ? 'bg-[#1E90D6]' : 'bg-black/90 '} lg:hidden backdrop-blur-lg text-white px-6 py-6 flex flex-col gap-6`}>
           <Link href="/events">Events</Link>
           <Link href="/projects">Projects</Link>
           <Link href="/partners">Partners</Link>
@@ -135,7 +137,7 @@ export default function Header({ openLogin, openRegister }: Props) {
                 </Link>
                 <button
                   onClick={handleLogout}
-                  className="text-left text-red-400"
+                  className="text-left text-white"
                 >
                   Logout
                 </button>

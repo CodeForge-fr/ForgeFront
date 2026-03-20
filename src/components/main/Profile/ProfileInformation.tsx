@@ -8,7 +8,7 @@ import password from "../../../../public/icons/profile-password.svg";
 const ProfileInformation = () => {
   return (
     <div className="w-full md:w-[65%] mb-10">
-      <div className="flex justify-between items-start mb-6">
+      <div className="flex flex-col justify-between items-start md:flex-row mb-6 gap-y-5 md:gap-0">
         <div>
           <h1 className="text-4xl font-semibold text-[#333333]">
             Karen Vardanyan
@@ -21,7 +21,7 @@ const ProfileInformation = () => {
       </div>
 
       {/* Navigation Tabs */}
-      <div className="flex border-b border-gray-200 mb-8 space-x-8">
+      <div className="flex flex-wrap border-b border-gray-200 space-x-8 gap-y-5 mt-10 md:mt-[100px]">
         <button className="flex items-center gap-2 pb-4 border-b-2 border-[#0097FE] text-[#0097FE] font-medium">
           <Image src={profile} alt="profile" width={16} height={16} /> About
         </button>
@@ -37,7 +37,7 @@ const ProfileInformation = () => {
       </div>
 
       {/* Form Section */}
-      <div className="flex flex-col gap-y-5">
+      <div className="flex flex-col gap-y-5 mt-20">
         <div>
           <h3 className="text-xl font-semibold text-[#333333]">About</h3>
           <p className="text-[#5E6C6A] text-sm font-normal">
@@ -45,7 +45,7 @@ const ProfileInformation = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 mt-2 gap-y-5">
+        <div className="grid grid-cols-1 mt-7 gap-y-5">
           <h4 className="font-bold text-[#333333] text-xl">Contact</h4>
           <div className="grid grid-cols-3 gap-4 text-sm">
             <span className="text-[#333333]">Phone</span>
