@@ -58,11 +58,13 @@ const AboutProfile = ({
       </div>
 
       <div className="space-y-8">
-        <div>
+        <div className="flex item-center justify-between">
           <h2 className="text-xl font-semibold text-[#333333] mb-3">Education</h2>
+          <p className="text-2xl">+</p>
         </div>
-        <div>
+        <div className="flex item-center justify-between">
           <h2 className="text-xl font-semibold text-[#333333] mb-3">Skills</h2>
+          <p className="text-2xl">+</p>
         </div>
       </div>
     </div>
