@@ -2,6 +2,7 @@ import React, { ChangeEvent, useRef } from "react";
 import { Camera } from "lucide-react";
 import Image from "next/image";
 import { IoPerson } from "react-icons/io5";
+// import EducationModal from "./createEducation";
 
 interface AboutProfileProps {
   previewUrl: string | null;
@@ -15,6 +16,7 @@ const AboutProfile = ({
   setPreviewUrl,
 }: AboutProfileProps) => {
   const fileInputRef = useRef<HTMLInputElement>(null);
+//   const [showModal, setShowModal] = useState(false);
 
   const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
@@ -24,6 +26,11 @@ const AboutProfile = ({
       setPreviewUrl(objectUrl);
     }
   };
+
+//   const handleSaveEducation = (data: unknown) => {
+//     console.log("Saved Education Data:", data);
+//     // You can add logic here to update your state or send to a database
+//   };
 
   return (
     <div className="w-full md:w-[30%] flex flex-col gap-10 relative overflow-visible">
@@ -59,14 +66,27 @@ const AboutProfile = ({
 
       <div className="space-y-8">
         <div className="flex item-center justify-between">
-          <h2 className="text-xl font-semibold text-[#333333] mb-3">Education</h2>
-          <p className="text-2xl">+</p>
+          <h2 className="text-xl font-semibold text-[#333333] mb-3">
+            Education
+          </h2>
+        
+          <p className="text-2xl">   {/* onClick={() => setShowModal(true)}  */}
+            +
+          </p>
         </div>
         <div className="flex item-center justify-between">
           <h2 className="text-xl font-semibold text-[#333333] mb-3">Skills</h2>
           <p className="text-2xl">+</p>
         </div>
       </div>
+
+      {/* {showModal && (
+        <EducationModal
+          isOpen={showModal}
+          onClose={() => setShowModal(false)}
+          onSave={handleSaveEducation}
+        />
+      )} */}
     </div>
   );
 };

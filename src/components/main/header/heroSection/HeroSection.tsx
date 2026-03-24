@@ -66,8 +66,6 @@ const HeroSlider = () => {
           />
         </div>
 
-        <div className="w-1 h-12 bg-[#FFFFFF33] flex justify-center rounded"></div>
-
         <div className="flex flex-col gap-y-5 mt-10 sm:mt-0">
           <p className="text-3xl lg:text-6xl tracking-widest">{slide.date}</p>
 

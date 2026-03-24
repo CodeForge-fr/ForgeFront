@@ -6,6 +6,7 @@ import { useAuth } from "../../../app/context/AuthContext";
 import { Menu, X } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { IoPerson } from "react-icons/io5";
+import { themeMap } from "../../../themes/headerThemes";
 
 type Props = {
   openLogin?: () => void;
@@ -18,7 +19,7 @@ export default function Header({ openLogin, openRegister }: Props) {
   const [openMenu, setOpenMenu] = useState(false);
   const [mobileMenu, setMobileMenu] = useState(false);
   const pathname = usePathname();
-  const [mounted, setMounted] = React.useState(false); // Add this
+  const [mounted, setMounted] = React.useState(false);
 
   React.useEffect(() => {
     setMounted(true);
@@ -30,29 +31,37 @@ export default function Header({ openLogin, openRegister }: Props) {
     setOpenMenu(false);
   };
 
+  const defaultTheme = {
+    header: "bg-white/5 rounded-b-2xl",
+    text: "text-white",
+    icon: "text-white",
+    nav: "text-gray-500",
+    mobileBg: "bg-black/90",
+  };
+
+  const currentTheme = themeMap[pathname] || defaultTheme;
+
   return (
     <header
-      className={`${pathname == "/profile" ? "bg-white md:bg-[#0097FE] static" : "bg-white/5 rounded-b-2xl"} absolute top-0 left-0 w-full z-50 backdrop-blur-md`}
+      className={`${currentTheme.header} absolute top-0 left-0 w-full z-50 backdrop-blur-md`}
     >
       <div className="max-w-xl md:max-w-4xl mx-auto px-4 lg:max-w-7xl py-[26px] flex items-center justify-between">
         <Link
           href={isLoggedIn ? "/" : "/"} // "/profile"
-          className={`${pathname == "/about" ? "text-black" : "text-white"} flex text-xl font-normal gap-2`}
+          className={`flex text-xl font-normal gap-2`}
         >
-          <span
-            className={`${pathname == "/profile" ? "text-[#333333] md:text-white" : "text-white"}`}
-          >
+          <span className={currentTheme.text}>
             <b className="text-blue-500 font-bold">Uni</b>Link
           </span>
         </Link>
 
         {/* DESKTOP NAV */}
         <nav
-          className={`${pathname == "/profile" ? "text-[#FFFFFF]" : "text-gray-500"} hidden lg:flex items-center gap-8 text-sm`}
+          className={`${currentTheme.nav} hidden lg:flex items-center gap-8 text-sm`}
         >
           <Link href="/events">Events</Link>
           <Link href="/projects">Projects</Link>
-          <Link href="/partners">Partners</Link>
+          <Link href="/courses">Courses</Link>
           <Link href="/contact">Contact Us</Link>
           <Link href="/about">About Us</Link>
         </nav>
@@ -63,7 +72,7 @@ export default function Header({ openLogin, openRegister }: Props) {
           <div className="relative hidden lg:block">
             {mounted && isLoggedIn ? (
               <Link href="/profile">
-                <IoPerson color="white" />
+                <IoPerson className={currentTheme.icon} />
               </Link>
             ) : (
               <button
@@ -112,7 +121,7 @@ export default function Header({ openLogin, openRegister }: Props) {
 
           {/* BURGER BUTTON */}
           <button
-            className={`${pathname == "/profile" ? "text-[#333333] md:text-white" : "text-white"} lg:hidden `}
+            className={`${currentTheme.icon} lg:hidden`}
             onClick={() => setMobileMenu(!mobileMenu)}
           >
             {mobileMenu ? <X size={26} /> : <Menu size={26} />}
@@ -122,10 +131,12 @@ export default function Header({ openLogin, openRegister }: Props) {
 
       {/* MOBILE MENU */}
       {mobileMenu && (
-        <div className={`${pathname == '/profile' ? 'bg-[#1E90D6]' : 'bg-black/90 '} lg:hidden backdrop-blur-lg text-white px-6 py-6 flex flex-col gap-6`}>
+        <div
+          className={`${currentTheme.mobileBg} ${currentTheme.text} lg:hidden backdrop-blur-lg px-6 py-6 flex flex-col gap-6`}
+        >
           <Link href="/events">Events</Link>
           <Link href="/projects">Projects</Link>
-          <Link href="/partners">Partners</Link>
+          <Link href="/courses">Courses</Link>
           <Link href="/contact">Contact Us</Link>
           <Link href="/about">About Us</Link>
 
@@ -135,10 +146,7 @@ export default function Header({ openLogin, openRegister }: Props) {
                 <Link href="/profile">
                   <IoPerson />
                 </Link>
-                <button
-                  onClick={handleLogout}
-                  className="text-left text-white"
-                >
+                <button onClick={handleLogout} className="text-left text-white">
                   Logout
                 </button>
               </>

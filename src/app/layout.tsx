@@ -5,6 +5,7 @@ import { AuthProvider } from "./context/AuthProvider";
 
 import Footer from "@/components/main/footer/Footer";
 import HeaderSection from "@/components/main/header/page";
+import { ModalProvider } from "./context/ModalProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -19,7 +20,7 @@ const geistMono = Geist_Mono({
 const poppins = Poppins({
   variable: "--font-poppins",
   subsets: ["latin"],
-  weight: ["100","200","300","400","500","600","700","800","900"],
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
 });
 
 export const metadata: Metadata = {
@@ -38,13 +39,13 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} ${poppins.variable} antialiased min-h-screen`}
       >
         <AuthProvider>
+          <ModalProvider>
+            <HeaderSection />
 
-          <HeaderSection />
+            {children}
 
-          {children}
-
-          <Footer />
-
+            <Footer />
+          </ModalProvider>
         </AuthProvider>
       </body>
     </html>
