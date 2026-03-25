@@ -38,7 +38,7 @@ const HeaderSection = () => {
   return (
     <div className="flex flex-col">
       <Header openLogin={handleOpenLogin} openRegister={handleOpenRegister} />
-      {pathname !== "/about" && (
+      {pathname !== "/about" && pathname !== "/courses" && (
         <div className="flex-1 bg-zinc-50 dark:bg-black">
           <HeroSection />
         </div>
