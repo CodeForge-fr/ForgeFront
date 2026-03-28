@@ -10,7 +10,7 @@ import emailIcon from "../../../public/icons/email.svg";
 import passwordIcon from "../../../public/icons/password.svg";
 import telIcon from "../../../public/icons/tel.svg";
 import close from "../../../public/icons/close.svg";
-import { useAuth } from "@/app/context/AuthContext";
+import { useAuth } from "@/context/AuthContext";
 
 interface ISignUp {
   onClose: () => void;

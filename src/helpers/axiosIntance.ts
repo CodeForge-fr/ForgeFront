@@ -3,9 +3,12 @@ import axios from "axios";
 const API_BASE_URL =
   process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:3000";
 
-const api = axios.create({
+export const api = axios.create({
   baseURL: API_BASE_URL,
   withCredentials: true,
+  headers: {
+    "Content-Type": "application/json",
+  },
 });
 
 api.interceptors.response.use(
@@ -18,7 +21,7 @@ api.interceptors.response.use(
 
       try {
         const res = await api.post("/api/auth/refresh");
-        console.log("refresh call", res)
+        console.log("refresh call", res);
         return api(originalRequest);
       } catch (refreshError) {
         return Promise.reject(refreshError);

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Modal from "./Modal";
-import { useAuth } from "@/app/context/AuthContext";
+import { useAuth } from "@/context/AuthContext";
 
 interface ISignIn {
   onClose: () => void;

@@ -1,5 +1,5 @@
-import { modalType } from "@/types/modalType";
 import { createContext, useContext } from "react";
+import { modalType } from "@/types/modalType";
 
 export const ModalContext = createContext<modalType | null>(null);
 

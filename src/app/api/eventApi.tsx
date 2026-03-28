@@ -1,6 +1,12 @@
-import api from "./axiosIntance";
+import api from "../../helpers/axiosIntance";
 
-export const fetchEvents = async ({ page, pageSize }: { page: number, pageSize: number }) => {
+export const fetchEvents = async ({
+  page,
+  pageSize,
+}: {
+  page: number;
+  pageSize: number;
+}) => {
   try {
     console.log(`/api/events?page=${page}&pageSize=${pageSize}`);
     const response = await api.get(
