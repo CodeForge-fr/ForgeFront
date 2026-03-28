@@ -4,14 +4,19 @@ import profile from "../../../../public/icons/profile.svg";
 import project from "../../../../public/icons/project.svg";
 import notification from "../../../../public/icons/notifications.svg";
 import password from "../../../../public/icons/profile-password.svg";
+import { useAuth } from "@/context/AuthContext";
 
 const ProfileInformation = () => {
+  const { user, loading } = useAuth();
+  if (loading) return <p>Loading profile...</p>;
+
+  if (!user) return <p>Please log in to view this page.</p>;
   return (
     <div className="w-full md:w-[65%] mb-10">
       <div className="flex flex-col justify-between items-start md:flex-row mb-6 gap-y-5 md:gap-0">
         <div>
           <h1 className="text-4xl font-semibold text-[#333333]">
-            Karen Vardanyan
+            {user.name} {user.surname}
           </h1>
           <p className="text-[#0097FE] font-normal text-md">Data Analyst</p>
         </div>
@@ -26,10 +31,12 @@ const ProfileInformation = () => {
           <Image src={profile} alt="profile" width={16} height={16} /> About
         </button>
         <button className="flex items-center gap-2 pb-4 text-gray-500 hover:text-gray-700">
-          <Image src={password} alt="password" width={16} height={16} /> Password
+          <Image src={password} alt="password" width={16} height={16} />{" "}
+          Password
         </button>
         <button className="flex items-center gap-2 pb-4 text-gray-500 hover:text-gray-700">
-          <Image src={notification} alt="notification" width={16} height={16} /> Notification
+          <Image src={notification} alt="notification" width={16} height={16} />{" "}
+          Notification
         </button>
         <button className="flex items-center gap-2 pb-4 text-gray-500 hover:text-gray-700">
           <Image src={project} alt="project" width={16} height={16} /> Projects
@@ -53,7 +60,7 @@ const ProfileInformation = () => {
 
             <span className="text-[#333333]">E - Mail</span>
             <span className="col-span-2 text-[#0097FE]">
-              karenvardanyan@gmail.com
+             {user.email} 
             </span>
 
             <span className="text-[#333333]">Address</span>
@@ -62,7 +69,9 @@ const ProfileInformation = () => {
         </div>
 
         <div className="grid grid-cols-1 gap-y-4 pt-4">
-          <h4 className="font-bold text-[#333333] text-xl">Personal Information</h4>
+          <h4 className="font-bold text-[#333333] text-xl">
+            Personal Information
+          </h4>
           <div className="grid grid-cols-3 gap-4 text-sm">
             <span className="text-[#333333]">Gender</span>
             <span className="col-span-2 text-[#0097FE]">Male</span>

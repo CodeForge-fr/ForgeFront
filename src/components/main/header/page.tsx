@@ -6,7 +6,7 @@ import HeroSection from "./heroSection/HeroSection";
 import Header from "./Header";
 import SignInModal from "@/components/modal/SignInModal";
 import SignUpModal from "@/components/modal/SignUpModal";
-import { useAuth } from "@/app/context/AuthContext";
+import { useAuth } from "@/context/AuthContext";
 import { usePathname } from "next/navigation";
 
 type ModalType = "login" | "register" | null;

@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { useAuth } from "../../../app/context/AuthContext";
+import { useAuth } from "../../../context/AuthContext";
 import { Menu, X } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { IoPerson } from "react-icons/io5";
@@ -47,7 +47,7 @@ export default function Header({ openLogin, openRegister }: Props) {
     >
       <div className="max-w-xl md:max-w-4xl mx-auto px-4 lg:max-w-7xl py-[26px] flex items-center justify-between">
         <Link
-          href={isLoggedIn ? "/" : "/"} // "/profile"
+          href={isLoggedIn ? "/profile" : "/"} // "/profile"
           className={`flex text-xl font-normal gap-2`}
         >
           <span className={currentTheme.text}>

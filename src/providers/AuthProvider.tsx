@@ -4,16 +4,14 @@ import { useState, useCallback } from "react";
 import type { ReactNode } from "react";
 import { loginProvider, registerProvider } from "@/app/api/auth";
 import type { IAuth, UserProfile } from "@/types/authType";
-import { AuthContext } from "./AuthContext";
+import { AuthContext } from "../context/AuthContext";
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [user, setUser] = useState<UserProfile | null>(null);
-  const [isLoggedIn, setIsLoggedIn] = useState(() => {
-    if (typeof window === "undefined") return false;
-    return !!localStorage.getItem("accessToken");
-  });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
+  const isLoggedIn = !!user;
 
   const login = useCallback(async (email: string, password: string) => {
     setLoading(true);
@@ -21,11 +19,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     try {
       const result = await loginProvider({ email, password });
 
-      localStorage.setItem("accessToken", result.accessToken);
-      localStorage.setItem("refreshToken", result.refreshToken);
-
-      setUser(result.user);
-      setIsLoggedIn(true);
+      setUser(result.user ?? null);
       return true;
     } catch (err) {
       setError(err instanceof Error ? err.message : "Login failed");
@@ -48,17 +42,15 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       setLoading(false);
     }
   }, []);
+
   const logout = useCallback(() => {
-    localStorage.removeItem("accessToken");
-    localStorage.removeItem("refreshToken");
     setUser(null);
-    setIsLoggedIn(false);
     setError(null);
   }, []);
 
   return (
     <AuthContext.Provider
-      value={{ user, isLoggedIn, loading, error, login, register, logout }}
+      value={{ user, loading, isLoggedIn, error, login, register, logout }}
     >
       {children}
     </AuthContext.Provider>

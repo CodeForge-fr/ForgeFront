@@ -1,21 +1,6 @@
-// export interface IAuth {
-//   name: string;
-//   surname: string;
-//   email: string;
-//   phone: string;
-//   password: string;
-//   nickname: string;
-//   age: number;
-//   gender: string;
-//   role: string;
-// }
-
-// export interface UserProfile {
-//   email: string;
-//   password: string;
-// }
 
 export interface UserProfile {
+  id: number | null | undefined;
   name: string;
   surname: string;
   email: string;
@@ -38,4 +23,8 @@ export interface AuthContextType {
   login: (email: string, password: string) => Promise<boolean>;
   register: (data: UserProfile & { password: string }) => Promise<boolean>;
   logout: () => void;
+}
+
+export interface TokenResponse {
+  user?: UserProfile | null;
 }
