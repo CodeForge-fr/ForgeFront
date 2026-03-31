@@ -3,5 +3,6 @@ export interface modalType {
   setLoading: (value: boolean) => void;
   activeModal: string | null;
   setActiveModal: (value: string | null) => void; 
-  onClose: () => void;
+  onClose: boolean;
+  setOnClose: (value: boolean) => void;
 }

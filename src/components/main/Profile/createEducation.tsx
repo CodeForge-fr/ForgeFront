@@ -1,10 +1,10 @@
-import { useAuth } from "@/context/AuthContext";
-import { useModal } from "@/context/useModalContext";
-import { IEducation } from "@/types/educationType";
 import React, { ChangeEvent, FormEvent, useState } from "react";
+import { useAuth } from "@/context/AuthContext";
+import { useProfile } from "@/context/ProfileContext";
+import { IEducation } from "@/types/educationType";
 
-const EducationModal = ({ onSave }: { onSave: (data: IEducation) => void }) => {
-  const { onClose, activeModal } = useModal();
+const EducationModal = () => {
+  const { onClose, activeModal, handleSaveEducation } = useProfile();
   const { user } = useAuth();
 
   const [formData, setFormData] = useState<IEducation>({
@@ -28,8 +28,7 @@ const EducationModal = ({ onSave }: { onSave: (data: IEducation) => void }) => {
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    onSave(formData);
-    onClose();
+    handleSaveEducation(formData);
   };
 
   return (
@@ -37,12 +36,10 @@ const EducationModal = ({ onSave }: { onSave: (data: IEducation) => void }) => {
       className="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4"
       onClick={onClose}
     >
-      {/* Modal Card */}
       <div
         className="bg-white rounded-2xl shadow-2xl w-full max-w-lg overflow-hidden relative animate-in fade-in zoom-in duration-200"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Header */}
         <div className="px-6 py-4 border-b border-gray-100 flex justify-between items-center">
           <h2 className="text-xl font-bold text-gray-800">Add Education</h2>
           <button
@@ -53,7 +50,6 @@ const EducationModal = ({ onSave }: { onSave: (data: IEducation) => void }) => {
           </button>
         </div>
 
-        {/* Form Body */}
         <form
           onSubmit={handleSubmit}
           className="p-6 space-y-5 max-h-[75vh] overflow-y-auto"
@@ -137,7 +133,6 @@ const EducationModal = ({ onSave }: { onSave: (data: IEducation) => void }) => {
             ></textarea>
           </div>
 
-          {/* Footer Buttons */}
           <div className="flex justify-end space-x-3 pt-4 border-t border-gray-100">
             <button
               type="button"

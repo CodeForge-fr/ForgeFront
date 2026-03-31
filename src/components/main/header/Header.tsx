@@ -3,10 +3,10 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { useAuth } from "../../../context/AuthContext";
-import { Menu, X } from "lucide-react";
 import { usePathname } from "next/navigation";
-import { IoPerson } from "react-icons/io5";
 import { themeMap } from "../../../themes/headerThemes";
+import MobileHeader from "./mobile/mobileHeader";
+import DesktopHeader from "./desktop/desktopHeader";
 
 type Props = {
   openLogin?: () => void;
@@ -56,120 +56,28 @@ export default function Header({ openLogin, openRegister }: Props) {
         </Link>
 
         {/* DESKTOP NAV */}
-        <nav
-          className={`${currentTheme.nav} hidden lg:flex items-center gap-8 text-sm`}
-        >
-          <Link href="/events">Events</Link>
-          <Link href="/projects">Projects</Link>
-          <Link href="/courses">Courses</Link>
-          <Link href="/contact">Contact Us</Link>
-          <Link href="/about">About Us</Link>
-        </nav>
-
-        {/* RIGHT SIDE */}
-        <div className="flex items-center gap-4">
-          {/* JOIN BUTTON */}
-          <div className="relative hidden lg:block">
-            {mounted && isLoggedIn ? (
-              <Link href="/profile">
-                <IoPerson className={currentTheme.icon} />
-              </Link>
-            ) : (
-              <button
-                onClick={() => setOpenMenu(!openMenu)}
-                className="bg-blue-500 hover:bg-blue-600 text-white px-5 py-2 rounded-full text-sm"
-              >
-                Join the platform
-              </button>
-            )}
-
-            {openMenu && (
-              <div className="absolute right-0 top-12 bg-white rounded-xl shadow-lg w-40 text-black flex flex-col overflow-hidden">
-                {isLoggedIn ? (
-                  <button
-                    onClick={handleLogout}
-                    className="px-4 py-2 hover:bg-gray-100 text-left"
-                  >
-                    Logout
-                  </button>
-                ) : (
-                  <>
-                    <button
-                      onClick={() => {
-                        openLogin?.();
-                        setOpenMenu(false);
-                      }}
-                      className="px-4 py-2 hover:bg-gray-100 text-left"
-                    >
-                      Sign In
-                    </button>
-
-                    <button
-                      onClick={() => {
-                        openRegister?.();
-                        setOpenMenu(false);
-                      }}
-                      className="px-4 py-2 hover:bg-gray-100 text-left"
-                    >
-                      Sign Up
-                    </button>
-                  </>
-                )}
-              </div>
-            )}
-          </div>
-
-          {/* BURGER BUTTON */}
-          <button
-            className={`${currentTheme.icon} lg:hidden`}
-            onClick={() => setMobileMenu(!mobileMenu)}
-          >
-            {mobileMenu ? <X size={26} /> : <Menu size={26} />}
-          </button>
-        </div>
+        <DesktopHeader
+          currentTheme={currentTheme}
+          mounted={mounted}
+          openMenu={openMenu}
+          setOpenMenu={setOpenMenu}
+          mobileMenu={mobileMenu}
+          setMobileMenu={setMobileMenu}
+          handleLogout={handleLogout}
+          openLogin={openLogin}
+          openRegister={openRegister}
+        />
       </div>
 
       {/* MOBILE MENU */}
-      {mobileMenu && (
-        <div
-          className={`${currentTheme.mobileBg} ${currentTheme.text} lg:hidden backdrop-blur-lg px-6 py-6 flex flex-col gap-6`}
-        >
-          <Link href="/events">Events</Link>
-          <Link href="/projects">Projects</Link>
-          <Link href="/courses">Courses</Link>
-          <Link href="/contact">Contact Us</Link>
-          <Link href="/about">About Us</Link>
-
-          <div className="border-t border-white/20 pt-4 flex flex-col gap-3">
-            {isLoggedIn ? (
-              <>
-                <Link href="/profile">
-                  <IoPerson />
-                </Link>
-                <button onClick={handleLogout} className="text-left text-white">
-                  Logout
-                </button>
-              </>
-            ) : (
-              <>
-                <button
-                  onClick={() => openLogin?.()}
-                  className="text-left text-blue-400"
-                >
-                  Sign In
-                </button>
-
-                <button
-                  onClick={() => openRegister?.()}
-                  className="text-left text-blue-400"
-                >
-                  Sign Up
-                </button>
-              </>
-            )}
-          </div>
-        </div>
-      )}
+      <MobileHeader
+        mobileMenu={mobileMenu}
+        setMobileMenu={setMobileMenu}
+        currentTheme={currentTheme}
+        handleLogout={handleLogout}
+        openLogin={openLogin}
+        openRegister={openRegister}
+      />
     </header>
   );
 }

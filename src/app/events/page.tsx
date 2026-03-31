@@ -1,50 +1,29 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { EventCard } from "@/components/main/universities/eventCard";
 import EventPagination from "./pagination";
 import EventSidebar from "./eventSideBar";
-import { fetchEvents } from "@/app/api/eventApi";
-import { Event } from "@/types/eventType";
+import { useEvent } from "@/context/EventContext";
 
 const Events = () => {
-  const [events, setEvents] = useState<Event[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
-  const [currentPage, setCurrentPage] = useState(1);
-  const pageSize = 9;
-  const [totalItems, setTotalItems] = useState(0);
+  const {
+    events,
+    loading,
+    currentPage,
+    setCurrentPage,
+    totalPages,
+    pageNumbers,
+  } = useEvent();
 
-  useEffect(() => {
-    const getEvents = async () => {
-      try {
-        const data = await fetchEvents({
-          page: currentPage,
-          pageSize,
-        });
-        setEvents(data);
-
-        if (data.length === pageSize) {
-          setTotalItems(currentPage * pageSize + 1);
-        } else {
-          setTotalItems(currentPage * pageSize - (pageSize - data.length));
-        }
-
-      } catch (error) {
-        console.error("Failed to fetch events:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    getEvents();
-  }, [currentPage]);
-
-  const totalPages = Math.ceil(totalItems / pageSize);
-  const pageNumbers = Array.from({ length: totalPages }, (_, i) => i + 1);
-
-  if (loading)
-    return <div className="text-center py-20">Loading Events...</div>;
-
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center h-64">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+        <span className="ml-4 text-gray-600">{loading}</span>
+      </div>
+    );
+  }
   return (
     <section className="px-20 my-10">
       <div className="flex items-start gap-x-10">
