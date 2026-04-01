@@ -5,7 +5,9 @@ import { AuthProvider } from "../providers/AuthProvider";
 
 import Footer from "@/components/main/footer/Footer";
 import HeaderSection from "@/components/main/header/page";
-import { ModalProvider } from "@/providers/ModalProvider";
+import { ProfileProvider } from "@/providers/ProfileProvider";
+import { EventProvider } from "@/providers/EventProvider";
+import { ProjectProvider } from "@/providers/ProjectProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -39,13 +41,17 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} ${poppins.variable} antialiased min-h-screen`}
       >
         <AuthProvider>
-          <ModalProvider>
-            <HeaderSection />
+            <ProfileProvider>
+              <EventProvider>
+                <ProjectProvider>
 
-            {children}
+                  <HeaderSection />
+                  {children}
+                  <Footer />
 
-            <Footer />
-          </ModalProvider>
+                </ProjectProvider>
+              </EventProvider>
+            </ProfileProvider>
         </AuthProvider>
       </body>
     </html>

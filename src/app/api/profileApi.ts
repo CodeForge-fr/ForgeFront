@@ -1,5 +1,6 @@
 import api from "@/helpers/axiosIntance";
-import { IEducation, profileType } from "@/types/educationType";
+import { IEducation } from "@/types/educationType";
+import { profileType } from "@/types/profileType";
 
 export const getSavedProfiles = async (userId: number) => {
   try {

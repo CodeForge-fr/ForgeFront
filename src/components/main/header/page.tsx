@@ -2,7 +2,7 @@
 "use client";
 
 import React, { useState } from "react";
-import HeroSection from "./heroSection/HeroSection";
+import HeroSection from "./hero/HeroSection";
 import Header from "./Header";
 import SignInModal from "@/components/modal/SignInModal";
 import SignUpModal from "@/components/modal/SignUpModal";
