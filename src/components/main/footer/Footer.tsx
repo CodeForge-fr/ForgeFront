@@ -8,13 +8,13 @@ export default function Footer() {
   return (
     <footer className="bg-[#1E90D6] w-full text-white py-8 sm:px-6 md:px-6 lg:px-20 lg:py-16">
       <div className="max-w-xl md:max-w-7xl mx-auto px-4 md:px-0">
-
         {/* Top */}
         <div className="grid md:grid-cols-2 gap-16 mb-16">
-
           {/* Left */}
           <div>
-            <h2 className="text-6xl sm:text-4xl font-semibold mb-10">Unilink</h2>
+            <h2 className="text-6xl sm:text-4xl font-semibold mb-10">
+              UniLink
+            </h2>
 
             <p className="text-sm opacity-80 mb-4 w-[75%] md:w-full">
               Stay updated with the latest cross-university events
@@ -29,7 +29,10 @@ export default function Footer() {
               <ArrowRight size={20} />
             </div>
 
-            <Link href="#" className="block mt-8 text-sm opacity-80 hover:opacity-100">
+            <Link
+              href="#"
+              className="block mt-8 text-sm opacity-80 hover:opacity-100"
+            >
               www.Unilink.am
             </Link>
           </div>
@@ -41,7 +44,6 @@ export default function Footer() {
             </h3>
 
             <div className="grid grid-cols-2 lg:grid-cols-3 gap-10 text-sm">
-
               {/* Menu */}
               <div>
                 <h4 className="font-semibold mb-4">Menu</h4>
@@ -99,14 +101,10 @@ export default function Footer() {
               {/* Contact */}
               <div>
                 <h4 className="font-semibold mb-4">Say Hello</h4>
-                <Link
-                  href="#"
-                  className="opacity-80 hover:opacity-100"
-                >
+                <Link href="#" className="opacity-80 hover:opacity-100">
                   info@unilink.am
                 </Link>
               </div>
-
             </div>
           </div>
         </div>
@@ -115,7 +113,6 @@ export default function Footer() {
         <div className="border-t border-white/30 pt-6 text-sm opacity-70">
           2026 UniLink Platform. All rights reserved.
         </div>
-
       </div>
     </footer>
   );

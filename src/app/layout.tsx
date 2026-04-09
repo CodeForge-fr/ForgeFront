@@ -41,17 +41,15 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} ${poppins.variable} antialiased min-h-screen`}
       >
         <AuthProvider>
-            <ProfileProvider>
-              <EventProvider>
-                <ProjectProvider>
-
-                  <HeaderSection />
-                  {children}
-                  <Footer />
-
-                </ProjectProvider>
-              </EventProvider>
-            </ProfileProvider>
+          <ProfileProvider>
+            <EventProvider>
+              <ProjectProvider>
+                <HeaderSection />
+                {children}
+                <Footer />
+              </ProjectProvider>
+            </EventProvider>
+          </ProfileProvider>
         </AuthProvider>
       </body>
     </html>
