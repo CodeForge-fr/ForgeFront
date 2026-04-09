@@ -1,9 +1,9 @@
 "use client";
 import { useState } from "react";
+import Image from "next/image";
 import { Poppins } from "next/font/google";
 import ProjectCard from "./ProjectCard";
 import ProjectPagination from "./pagination";
-import EventPagination from "../events/pagination";
 
 // ─── Font ───────────────
 
@@ -88,7 +88,9 @@ function FeaturedBanner() {
     <section className="relative rounded-2xl overflow-hidden border border-gray-200 max-h-[322px]">
       <div className="flex">
         <div className="w-1/2 flex-shrink-0">
-          <img
+          <Image
+            width={100}
+            height={100}
             src="/images/futuristic-city.png"
             alt="Smart City"
             className="w-full h-full object-cover"

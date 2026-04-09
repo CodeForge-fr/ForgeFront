@@ -27,9 +27,9 @@ const AboutProfile = () => {
   }, []);
 
   return (
-    <div className="w-full md:w-[30%] flex flex-col gap-10 relative overflow-visible">
+    <div className="w-4/5 mx-auto sm:w-[30%] sm:m-0 flex flex-col gap-10 relative overflow-visible">
       <div
-        className="relative w-full h-100 cursor-pointer -mt-40 z-50 rounded-2xl overflow-hidden group"
+        className="relative w-full h-100 aspect-[2/3] cursor-pointer -mt-40 z-50 rounded-2xl overflow-hidden group"
         onClick={() => fileInputRef.current?.click()}
       >
         {previewUrl ? (

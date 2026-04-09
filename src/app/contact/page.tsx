@@ -2,30 +2,33 @@
 "use client";
 
 import { Mail, Phone } from "lucide-react";
+import { useState } from "react";
 
 export default function ContactPage() {
+  const [phone, setPhone] = useState("");
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value.replace(/\D/g, "");
+    setPhone(value);
+  };
+
   return (
     <div className="w-full min-h-screen flex items-center justify-center px-6 py-20">
-      
       <div className="max-w-6xl w-full grid md:grid-cols-2 gap-16 items-center">
-
         {/* LEFT SIDE */}
         <div>
-          <p className="text-sm text-gray-500 mb-4">
-            We Are Here To Help You
-          </p>
+          <p className="text-sm text-gray-500 mb-4">We Are Here To Help You</p>
 
           <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6">
             Contact the <br /> UniLink Team
           </h1>
 
           <p className="text-gray-500 mb-10">
-            We're Happy To Answer Your Questions And Support You Every
-            Step Of The Way.
+            We're Happy To Answer Your Questions And Support You Every Step Of
+            The Way.
           </p>
 
           <div className="space-y-6">
-
             <div className="flex items-center gap-4">
               <div className="bg-gray-200 p-3 rounded-full">
                 <Mail size={18} />
@@ -47,15 +50,12 @@ export default function ContactPage() {
                 <p className="text-gray-800">+374 10 123456</p>
               </div>
             </div>
-
           </div>
         </div>
 
         {/* RIGHT SIDE FORM */}
         <div className="bg-white rounded-3xl shadow-xl p-10">
-
           <form className="flex flex-col gap-5">
-
             <div>
               <label className="text-sm text-gray-600">Name</label>
               <input
@@ -78,6 +78,8 @@ export default function ContactPage() {
               <label className="text-sm text-gray-600">Phone Number</label>
               <input
                 type="text"
+                value={phone}
+                onChange={handleChange}
                 placeholder="Phone number"
                 className="w-full border rounded-full px-4 py-2 mt-1 outline-none"
               />
@@ -98,11 +100,8 @@ export default function ContactPage() {
             >
               Send Message
             </button>
-
           </form>
-
         </div>
-
       </div>
     </div>
   );
