@@ -8,6 +8,7 @@ import HeaderSection from "@/components/main/header/page";
 import { ProfileProvider } from "@/providers/ProfileProvider";
 import { EventProvider } from "@/providers/EventProvider";
 import { ProjectProvider } from "@/providers/ProjectProvider";
+import { CourseProvider } from "@/providers/CourseProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -44,9 +45,11 @@ export default function RootLayout({
           <ProfileProvider>
             <EventProvider>
               <ProjectProvider>
-                <HeaderSection />
-                {children}
-                <Footer />
+                <CourseProvider>
+                  <HeaderSection />
+                  {children}
+                  <Footer />
+                </CourseProvider>
               </ProjectProvider>
             </EventProvider>
           </ProfileProvider>

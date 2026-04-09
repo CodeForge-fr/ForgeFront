@@ -36,4 +36,12 @@ export const themeMap: Record<
     nav: "text-gray-300",
     mobileBg: "bg-black/95",
   },
+  "/courses": {
+    header:
+      "bg-gradient-to-r from-[#4F46E5] to-[#9333EA] shadow-md border-b border-white/10",
+    text: "text-white",
+    icon: "text-white",
+    nav: "text-gray-200",
+    mobileBg: "bg-[#4F46E5]",
+  },
 };

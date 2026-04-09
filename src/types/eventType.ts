@@ -6,7 +6,6 @@ export interface EventContextType {
   activeModal: string | null;
   setActiveModal: (modal: string | null) => void;
   onClose: () => void;
-  // Added Pagination & Logic
   currentPage: number;
   setCurrentPage: (page: number) => void;
   totalPages: number;
